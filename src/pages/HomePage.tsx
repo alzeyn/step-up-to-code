@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 // Басты бет - балаларды қарсы алу беті
 export default function HomePage() {
   const topics = [
-    { path: '/topic1', emoji: '📝', title: 'Менің алғашқы программам', desc: 'Сызықтық алгоритмді үйрен' },
-    { path: '/topic2', emoji: '🧩', title: 'Scratch жоба құру', desc: 'Спрайт пен блоктарды үйрен' },
-    { path: '/topic3', emoji: '📁', title: 'Жобалық жұмыс (1)', desc: 'Өз жобаңды жаса' },
-    { path: '/topic4', emoji: '💾', title: 'Scratch сақтау', desc: 'Жобаны сақтау және ашу' },
-    { path: '/topic5', emoji: '📂', title: 'Жобалық жұмыс (2)', desc: 'Қосымша тапсырмалар' },
-    { path: '/games', emoji: '🎮', title: 'Ойындар', desc: 'Қызықты ойындар ойна' },
+    { path: '/topic1', emoji: '📝✨', title: 'Менің алғашқы программам', desc: '1️⃣2️⃣3️⃣ Сызықтық алгоритмді үйрен' },
+    { path: '/topic2', emoji: '🧩🐱', title: 'Scratch жоба құру', desc: '🎨 Спрайт пен блоктарды үйрен' },
+    { path: '/topic3', emoji: '📁🎯', title: 'Жобалық жұмыс (1)', desc: '💻 Өз жобаңды жаса' },
+    { path: '/topic4', emoji: '💾📂', title: 'Scratch сақтау', desc: '✅ Жобаны сақтау және ашу' },
+    { path: '/topic5', emoji: '📂🚀', title: 'Жобалық жұмыс (2)', desc: '⭐ Қосымша тапсырмалар' },
+    { path: '/games', emoji: '🎮🎯', title: 'Ойындар', desc: '🎈 Қызықты ойындар ойна' },
   ];
 
   return (
@@ -35,41 +35,59 @@ export default function HomePage() {
 
           {/* Welcome message */}
           <div className="card-fun max-w-2xl mx-auto mb-8">
+            <div className="text-5xl mb-4">👋🧒👧</div>
             <p className="text-xl leading-relaxed">
               Сәлем, кішкентай программист! 👋
               <br />
-              Бұл сайтта сен <strong>алгоритмдік ойлауды</strong> үйренесің.
-              <br />
-              Scratch программасында қызықты жобалар жасайсың! 🎨
+              <span className="flex items-center justify-center gap-2 mt-2">
+                <span className="text-2xl">🧠</span>
+                Бұл сайтта сен <strong>алгоритмдік ойлауды</strong> үйренесің.
+              </span>
+              <span className="flex items-center justify-center gap-2 mt-2">
+                <span className="text-2xl">🎨</span>
+                Scratch программасында қызықты жобалар жасайсың!
+              </span>
             </p>
           </div>
 
           {/* What is algorithmic thinking */}
           <div className="grid md:grid-cols-2 gap-6 mb-10">
             <div className="card-topic border-secondary">
-              <span className="text-5xl mb-4 block">🧠</span>
-              <h3 className="text-xl font-bold mb-3">Алгоритмдік ойлау дегеніміз не?</h3>
+              <span className="text-5xl mb-4 block">🧠💭</span>
+              <h3 className="text-xl font-bold mb-3">🤔 Алгоритмдік ойлау дегеніміз не? 🤔</h3>
+              <div className="text-4xl mb-3">1️⃣➡️2️⃣➡️3️⃣</div>
               <p className="text-lg">
                 Бұл — <strong>қадам-қадамымен ойлау</strong>! 
-                Мысалы, шай қайнату үшін не істейсіз? 
-                Алдымен су құйасыз, сосын қайнатасыз, сосын шай саласыз.
+              </p>
+              <div className="flex items-center justify-center gap-2 mt-3 text-3xl">
+                <span>🫖</span>
+                <span>💧</span>
+                <span>➡️</span>
+                <span>🔥</span>
+                <span>➡️</span>
+                <span>🍵</span>
+              </div>
+              <p className="text-sm text-muted-foreground mt-2">
+                Шай қайнату: су құй ➡️ қайнат ➡️ шай сал
               </p>
             </div>
             <div className="card-topic border-accent">
-              <span className="text-5xl mb-4 block">🌍</span>
-              <h3 className="text-xl font-bold mb-3">Күнделікті өмірде қалай көмектеседі?</h3>
+              <span className="text-5xl mb-4 block">🌍🏠</span>
+              <h3 className="text-xl font-bold mb-3">🌟 Күнделікті өмірде қалай көмектеседі? 🌟</h3>
+              <div className="text-4xl mb-3">🏫🍳🎮</div>
               <p className="text-lg">
-                Мектепке жиналу, тамақ дайындау, ойын ойнау — 
+                Мектепке жиналу 🎒, тамақ дайындау 🍳, ойын ойнау 🎮 — 
                 бәрі <strong>алгоритм</strong>! 
-                Қадамдарды дұрыс жоспарлауды үйренесің.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                📋 Қадамдарды дұрыс жоспарлауды үйренесің!
               </p>
             </div>
           </div>
 
           {/* Start button */}
           <Link to="/topic1" className="btn-primary inline-flex items-center gap-3 text-2xl mb-12">
-            <span>Бастау</span>
-            <span className="text-3xl">🚀</span>
+            <span>🚀 Бастау 🚀</span>
           </Link>
         </div>
       </section>
@@ -78,7 +96,7 @@ export default function HomePage() {
       <section className="py-12 px-4 bg-muted/30">
         <div className="max-w-5xl mx-auto">
           <h2 className="section-title text-center mb-8">
-            📚 Біздің тақырыптар
+            📚 Біздің тақырыптар 📚
           </h2>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -105,14 +123,18 @@ export default function HomePage() {
         <div className="max-w-3xl mx-auto">
           <div className="card-topic border-pink bg-gradient-to-br from-card to-pink/10">
             <div className="flex items-start gap-4">
-              <span className="text-5xl">👨‍👩‍👧‍👦</span>
+              <span className="text-5xl">👨‍👩‍👧‍👦📖</span>
               <div>
-                <h3 className="text-xl font-bold mb-3">Ата-аналар мен мұғалімдерге</h3>
+                <h3 className="text-xl font-bold mb-3">👨‍👩‍👧 Ата-аналар мен мұғалімдерге 👨‍🏫</h3>
                 <p className="text-lg leading-relaxed">
-                  "stepcoding" сайты 1-2 сынып оқушыларына арналған. 
+                  "stepcoding" сайты 1-2 сынып оқушыларына арналған. 👧👦
+                  <br />
                   Балалар Scratch программасын пайдаланып, алгоритмдік ойлауды 
-                  дамытады. Әр тапсырма қарапайым және қызықты етіп жасалған. 
-                  Баланың жетістіктерін "Менің жетістіктерім" бөлімінен көре аласыз! 🌟
+                  дамытады. 🧠
+                  <br />
+                  Әр тапсырма қарапайым және қызықты етіп жасалған. ✨
+                  <br />
+                  Баланың жетістіктерін "Менің жетістіктерім" бөлімінен көре аласыз! 🏆⭐
                 </p>
               </div>
             </div>

@@ -11,25 +11,29 @@ export default function Topic2() {
         {/* Title */}
         <header className="text-center mb-10">
           <span className="text-6xl mb-4 block animate-wiggle">🧩</span>
-          <h1 className="section-title">Scratch программасында жоба құру</h1>
+          <h1 className="section-title">🎨 Scratch программасында жоба құру 🎨</h1>
         </header>
 
         {/* What is a sprite */}
         <section className="card-topic border-highlight mb-8">
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-            <span>🐱</span> Спрайт дегеніміз не?
+            <span>🐱</span> Спрайт дегеніміз не? <span>🎭</span>
           </h2>
+          <div className="flex items-center gap-4 mb-4">
+            <span className="text-6xl">🐱🐶🧑🚗</span>
+          </div>
           <p className="text-lg leading-relaxed mb-4">
             <strong>Спрайт</strong> — бұл Scratch-тағы кейіпкер! 
-            Мысық, ит, адам, машина — бәрі спрайт бола алады. 🎭
+            Мысық 🐱, ит 🐶, адам 🧑, машина 🚗 — бәрі спрайт бола алады!
           </p>
-          <p className="text-lg">
-            Сен спрайтты программалайсың — ол қозғалады, сөйлейді, секіреді!
+          <p className="text-lg flex items-center gap-2">
+            <span className="text-2xl">✨</span>
+            Сен спрайтты программалайсың — ол қозғалады 🚶, сөйлейді 💬, секіреді 🦘!
           </p>
           <div className="mt-6 flex justify-center">
             <div className="bg-muted rounded-2xl p-6 text-center">
               <span className="text-8xl">🐱</span>
-              <p className="mt-2 font-bold">Scratch мысығы — бірінші спрайтың!</p>
+              <p className="mt-2 font-bold text-lg">👆 Scratch мысығы — бірінші спрайтың! 👆</p>
             </div>
           </div>
         </section>
@@ -37,67 +41,71 @@ export default function Topic2() {
         {/* Basic blocks */}
         <section className="mb-10">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-            <span>🎨</span> Негізгі блоктар
+            <span>🎨</span> Негізгі блоктар <span>🧱</span>
           </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             {/* Motion blocks */}
             <div className="card-fun">
-              <h3 className="text-xl font-bold mb-4 text-blue-600">
-                🏃 Қозғалыс блоктары
+              <h3 className="text-xl font-bold mb-4 text-blue-600 flex items-center gap-2">
+                <span className="text-3xl">🏃🚶</span>
+                Қозғалыс блоктары
               </h3>
-              <p className="text-muted-foreground mb-4">
-                Спрайтты қозғалтуға арналған
+              <p className="text-muted-foreground mb-4 flex items-center gap-2">
+                <span>🐱</span>➡️ Спрайтты қозғалтуға арналған
               </p>
               <div className="space-y-3">
-                <ScratchBlock type="motion">10 қадам жүру</ScratchBlock>
-                <ScratchBlock type="motion">90 градусқа бұрылу</ScratchBlock>
-                <ScratchBlock type="motion">x: 0 y: 0 нүктесіне бару</ScratchBlock>
+                <ScratchBlock type="motion">🚶 10 қадам жүру</ScratchBlock>
+                <ScratchBlock type="motion">↩️ 90 градусқа бұрылу</ScratchBlock>
+                <ScratchBlock type="motion">📍 x: 0 y: 0 нүктесіне бару</ScratchBlock>
               </div>
             </div>
 
             {/* Looks blocks */}
             <div className="card-fun">
-              <h3 className="text-xl font-bold mb-4 text-purple-600">
-                👀 Көрініс блоктары
+              <h3 className="text-xl font-bold mb-4 text-purple-600 flex items-center gap-2">
+                <span className="text-3xl">👀👗</span>
+                Көрініс блоктары
               </h3>
-              <p className="text-muted-foreground mb-4">
-                Спрайттың сырт көрінісін өзгерту
+              <p className="text-muted-foreground mb-4 flex items-center gap-2">
+                <span>🎨</span>➡️ Спрайттың сырт көрінісін өзгерту
               </p>
               <div className="space-y-3">
-                <ScratchBlock type="looks">"Сәлем!" деп айту</ScratchBlock>
-                <ScratchBlock type="looks">Костюмді ауыстыру</ScratchBlock>
-                <ScratchBlock type="looks">Өлшемді 10%-ға өзгерту</ScratchBlock>
+                <ScratchBlock type="looks">💬 "Сәлем!" деп айту</ScratchBlock>
+                <ScratchBlock type="looks">👗 Костюмді ауыстыру</ScratchBlock>
+                <ScratchBlock type="looks">📏 Өлшемді 10%-ға өзгерту</ScratchBlock>
               </div>
             </div>
 
             {/* Events blocks */}
             <div className="card-fun">
-              <h3 className="text-xl font-bold mb-4 text-yellow-600">
-                🏳️ Оқиғалар блоктары
+              <h3 className="text-xl font-bold mb-4 text-yellow-600 flex items-center gap-2">
+                <span className="text-3xl">🏳️▶️</span>
+                Оқиғалар блоктары
               </h3>
-              <p className="text-muted-foreground mb-4">
-                Программаны бастау үшін
+              <p className="text-muted-foreground mb-4 flex items-center gap-2">
+                <span>🚦</span>➡️ Программаны бастау үшін
               </p>
               <div className="space-y-3">
                 <ScratchBlock type="events">🏳️ жасыл жалауша басылғанда</ScratchBlock>
-                <ScratchBlock type="events">Осы спрайт басылғанда</ScratchBlock>
-                <ScratchBlock type="events">Бос орын пернесі басылғанда</ScratchBlock>
+                <ScratchBlock type="events">👆 Осы спрайт басылғанда</ScratchBlock>
+                <ScratchBlock type="events">⌨️ Бос орын пернесі басылғанда</ScratchBlock>
               </div>
             </div>
 
             {/* Control blocks */}
             <div className="card-fun">
-              <h3 className="text-xl font-bold mb-4 text-orange-600">
-                🔄 Басқару блоктары
+              <h3 className="text-xl font-bold mb-4 text-orange-600 flex items-center gap-2">
+                <span className="text-3xl">🔄⏳</span>
+                Басқару блоктары
               </h3>
-              <p className="text-muted-foreground mb-4">
-                Уақыт пен қайталау үшін
+              <p className="text-muted-foreground mb-4 flex items-center gap-2">
+                <span>⏱️</span>➡️ Уақыт пен қайталау үшін
               </p>
               <div className="space-y-3">
-                <ScratchBlock type="control">1 секунд күту</ScratchBlock>
-                <ScratchBlock type="control">10 рет қайталау</ScratchBlock>
-                <ScratchBlock type="control">Егер ... болса</ScratchBlock>
+                <ScratchBlock type="control">⏳ 1 секунд күту</ScratchBlock>
+                <ScratchBlock type="control">🔄 10 рет қайталау</ScratchBlock>
+                <ScratchBlock type="control">❓ Егер ... болса</ScratchBlock>
               </div>
             </div>
           </div>
@@ -133,42 +141,46 @@ function Task1() {
     <div className="task-card">
       <h3 className="text-xl font-bold mb-4 flex items-center gap-3">
         <span className="step-number text-lg">1</span>
-        Тапсырма: Не болады?
+        🤔 Тапсырма: Не болады? 🤔
       </h3>
-      <p className="text-muted-foreground mb-4">
+      <p className="text-muted-foreground mb-4 flex items-center gap-2">
+        <span className="text-xl">🐱</span>
         Мына блоктар орындалғанда мысық не істейді?
+        <span className="text-xl">❓</span>
       </p>
 
       <div className="card-fun bg-muted/50 mb-6">
+        <div className="text-4xl mb-3 text-center">🏳️ ➡️ 🚶 ➡️ 💬</div>
         <div className="space-y-3">
           <ScratchBlock type="events">🏳️ жасыл жалауша басылғанда</ScratchBlock>
-          <ScratchBlock type="motion">10 қадам жүру</ScratchBlock>
-          <ScratchBlock type="looks">"Сәлем!" деп айту</ScratchBlock>
+          <ScratchBlock type="motion">🚶 10 қадам жүру</ScratchBlock>
+          <ScratchBlock type="looks">💬 "Сәлем!" деп айту</ScratchBlock>
         </div>
       </div>
 
       <div className="space-y-3 mb-6">
         {[
-          { id: 1, text: 'Мысық ұйықтайды' },
-          { id: 2, text: 'Мысық жүреді және "Сәлем!" дейді' },
-          { id: 3, text: 'Мысық жоғалып кетеді' },
+          { id: 1, text: 'Мысық ұйықтайды', emoji: '🐱😴💤' },
+          { id: 2, text: 'Мысық жүреді және "Сәлем!" дейді', emoji: '🐱🚶💬' },
+          { id: 3, text: 'Мысық жоғалып кетеді', emoji: '🐱❌👻' },
         ].map((option) => (
           <button
             key={option.id}
             onClick={() => setSelected(option.id)}
-            className={`w-full text-left p-4 rounded-xl border-2 transition-all ${
+            className={`w-full text-left p-4 rounded-xl border-2 transition-all flex items-center gap-4 ${
               selected === option.id
                 ? 'border-secondary bg-secondary/10'
                 : 'border-border hover:border-secondary/50'
             }`}
           >
-            <span className="font-semibold">{option.text}</span>
+            <span className="text-3xl">{option.emoji}</span>
+            <span className="font-semibold text-lg">{option.text}</span>
           </button>
         ))}
       </div>
 
       <button onClick={checkAnswer} className="btn-secondary" disabled={selected === null}>
-        Тексеру ✓
+        ✅ Тексеру
       </button>
 
       <TaskFeedback isCorrect={feedback} onClose={() => setFeedback(null)} />
@@ -195,36 +207,39 @@ function Task2() {
     <div className="task-card">
       <h3 className="text-xl font-bold mb-4 flex items-center gap-3">
         <span className="step-number text-lg">2</span>
-        Тапсырма: Дұрыс блокты тап
+        🔍 Тапсырма: Дұрыс блокты тап 🔍
       </h3>
-      <p className="text-lg mb-4">
-        Сен спрайтты <strong>10 қадам алға жүргізгің</strong> келеді. 
-        Қай блокты пайдаланасың?
-      </p>
+      <div className="flex items-center gap-3 mb-4">
+        <span className="text-4xl">🐱🚶</span>
+        <p className="text-lg">
+          Сен спрайтты <strong>10 қадам алға жүргізгің</strong> келеді. 
+          Қай блокты пайдаланасың?
+        </p>
+      </div>
 
       <div className="grid sm:grid-cols-3 gap-4 mb-6">
         <div
           onClick={() => setSelected('looks')}
           className={`cursor-pointer transition-transform ${selected === 'looks' ? 'scale-105 ring-4 ring-primary' : ''}`}
         >
-          <ScratchBlock type="looks">"Сәлем!" деп айту</ScratchBlock>
+          <ScratchBlock type="looks">💬 "Сәлем!" деп айту</ScratchBlock>
         </div>
         <div
           onClick={() => setSelected('motion')}
           className={`cursor-pointer transition-transform ${selected === 'motion' ? 'scale-105 ring-4 ring-primary' : ''}`}
         >
-          <ScratchBlock type="motion">10 қадам жүру</ScratchBlock>
+          <ScratchBlock type="motion">🚶 10 қадам жүру</ScratchBlock>
         </div>
         <div
           onClick={() => setSelected('control')}
           className={`cursor-pointer transition-transform ${selected === 'control' ? 'scale-105 ring-4 ring-primary' : ''}`}
         >
-          <ScratchBlock type="control">1 секунд күту</ScratchBlock>
+          <ScratchBlock type="control">⏳ 1 секунд күту</ScratchBlock>
         </div>
       </div>
 
       <button onClick={checkAnswer} className="btn-secondary" disabled={selected === null}>
-        Тексеру ✓
+        ✅ Тексеру
       </button>
 
       <TaskFeedback isCorrect={feedback} onClose={() => setFeedback(null)} />
@@ -259,20 +274,23 @@ function Task3() {
     <div className="task-card">
       <h3 className="text-xl font-bold mb-4 flex items-center gap-3">
         <span className="step-number text-lg">3</span>
-        Тапсырма: Қажетті блоктарды таңда
+        🧩 Тапсырма: Қажетті блоктарды таңда 🧩
       </h3>
-      <p className="text-lg mb-4">
-        Мысық жасыл жалаушаны басқанда жүріп, "Сәлем!" деп айту керек. 
-        Қажетті <strong>3 блокты</strong> таңда.
-      </p>
+      <div className="flex items-center gap-3 mb-4">
+        <span className="text-4xl">🐱🏳️🚶💬</span>
+        <p className="text-lg">
+          Мысық жасыл жалаушаны басқанда жүріп, "Сәлем!" деп айту керек. 
+          Қажетті <strong>3 блокты</strong> таңда.
+        </p>
+      </div>
 
       <div className="grid sm:grid-cols-2 gap-4 mb-6">
         {[
-          { id: 'events', type: 'events' as const, text: '🏳️ жасыл жалауша басылғанда' },
-          { id: 'motion', type: 'motion' as const, text: '10 қадам жүру' },
-          { id: 'looks', type: 'looks' as const, text: '"Сәлем!" деп айту' },
-          { id: 'control', type: 'control' as const, text: '10 рет қайталау' },
-          { id: 'sound', type: 'sound' as const, text: 'Дыбыс ойнату' },
+          { id: 'events', type: 'events' as const, text: '🏳️ жасыл жалауша басылғанда', emoji: '🏳️' },
+          { id: 'motion', type: 'motion' as const, text: '🚶 10 қадам жүру', emoji: '🚶' },
+          { id: 'looks', type: 'looks' as const, text: '💬 "Сәлем!" деп айту', emoji: '💬' },
+          { id: 'control', type: 'control' as const, text: '🔄 10 рет қайталау', emoji: '🔄' },
+          { id: 'sound', type: 'sound' as const, text: '🔊 Дыбыс ойнату', emoji: '🔊' },
         ].map((block) => (
           <div
             key={block.id}
@@ -289,12 +307,12 @@ function Task3() {
       </div>
 
       <button onClick={checkAnswer} className="btn-secondary">
-        Тексеру ✓
+        ✅ Тексеру
       </button>
 
       <TaskFeedback 
         isCorrect={feedback} 
-        incorrectMessage="3 блок таңда: оқиға, қозғалыс және көрініс!"
+        incorrectMessage="3️⃣ блок таңда: 🏳️ оқиға, 🚶 қозғалыс және 💬 көрініс!"
         onClose={() => setFeedback(null)} 
       />
     </div>

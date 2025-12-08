@@ -11,43 +11,46 @@ export default function Topic4() {
         {/* Title */}
         <header className="text-center mb-10">
           <span className="text-6xl mb-4 block animate-bounce-slow">💾</span>
-          <h1 className="section-title">Scratch сақтау және ашу</h1>
+          <h1 className="section-title">💾 Scratch сақтау және ашу 📂</h1>
         </header>
 
         {/* Saving explanation */}
         <section className="card-topic border-secondary mb-8">
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-            <span>💾</span> Жобаны қалай сақтаймыз?
+            <span>💾</span> Жобаны қалай сақтаймыз? <span>🤔</span>
           </h2>
+          <div className="flex items-center gap-4 mb-4">
+            <span className="text-5xl">💻➡️💾✅</span>
+          </div>
           <p className="text-lg leading-relaxed mb-6">
-            Сенің жобаң өте маңызды! Оны сақтау керек, 
-            сонда кейін қайта ашып, жалғастыра аласың.
+            Сенің жобаң өте маңызды! 🌟 Оны сақтау керек, 
+            сонда кейін қайта ашып, жалғастыра аласың! 🔄
           </p>
           
           <div className="space-y-4">
             <StepCard 
               number={1} 
-              emoji="📂" 
+              emoji="📂👆" 
               title="Файл мәзірін аш" 
-              description="Жоғарғы сол жақта 'Файл' деген жерді бас"
+              description="Жоғарғы сол жақта 'Файл' деген жерді бас 👆"
             />
             <StepCard 
               number={2} 
-              emoji="💾" 
+              emoji="💾⬇️" 
               title="'Компьютерге сақтау' дегенді бас" 
-              description="Немесе 'Save to your computer'"
+              description="Немесе 'Save to your computer' 💻"
             />
             <StepCard 
               number={3} 
-              emoji="✏️" 
+              emoji="✏️📝" 
               title="Жобаға атау бер" 
-              description="Мысалы: 'менің_мысығым' немесе 'билейтін_шар'"
+              description="Мысалы: 'менің_мысығым' 🐱 немесе 'билейтін_шар' 🎈"
             />
             <StepCard 
               number={4} 
-              emoji="✅" 
+              emoji="✅👍" 
               title="Сақтау түймесін бас" 
-              description="Енді жобаң компьютерде сақталды!"
+              description="Енді жобаң компьютерде сақталды! 🎉"
             />
           </div>
         </section>
@@ -55,36 +58,39 @@ export default function Topic4() {
         {/* Opening explanation */}
         <section className="card-topic border-accent mb-8">
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-            <span>📂</span> Жобаны қалай ашамыз?
+            <span>📂</span> Жобаны қалай ашамыз? <span>🔓</span>
           </h2>
+          <div className="flex items-center gap-4 mb-4">
+            <span className="text-5xl">💾➡️📂➡️💻</span>
+          </div>
           <p className="text-lg leading-relaxed mb-6">
-            Сақталған жобаңды қайта ашу оңай!
+            Сақталған жобаңды қайта ашу оңай! 👍
           </p>
           
           <div className="space-y-4">
             <StepCard 
               number={1} 
-              emoji="📂" 
+              emoji="📂👆" 
               title="Файл мәзірін аш" 
-              description="Жоғарғы сол жақта 'Файл' деген жерді бас"
+              description="Жоғарғы сол жақта 'Файл' деген жерді бас 👆"
             />
             <StepCard 
               number={2} 
-              emoji="📁" 
+              emoji="📁⬆️" 
               title="'Компьютерден жүктеу' дегенді бас" 
-              description="Немесе 'Load from your computer'"
+              description="Немесе 'Load from your computer' 💻"
             />
             <StepCard 
               number={3} 
-              emoji="🔍" 
+              emoji="🔍👀" 
               title="Жобаңды тап" 
-              description="Компьютерден сақталған файлды тауып, таңда"
+              description="Компьютерден сақталған файлды тауып, таңда 📄"
             />
             <StepCard 
               number={4} 
-              emoji="✅" 
+              emoji="✅🎉" 
               title="Ашу түймесін бас" 
-              description="Жобаң қайта ашылды!"
+              description="Жобаң қайта ашылды! 🚀"
             />
           </div>
         </section>
@@ -101,6 +107,12 @@ export default function Topic4() {
 
 // Тапсырма 1: Сақтау қадамдарын реттеу
 function Task1() {
+  const steps = [
+    { text: 'Файл мәзірін ашу', emoji: '📂👆' },
+    { text: 'Компьютерге сақтау дегенді басу', emoji: '💾⬇️' },
+    { text: 'Жобаға атау беру', emoji: '✏️📝' },
+    { text: 'Сақтау түймесін басу', emoji: '✅👍' },
+  ];
   const correctOrder = [
     'Файл мәзірін ашу',
     'Компьютерге сақтау дегенді басу',
@@ -108,10 +120,10 @@ function Task1() {
     'Сақтау түймесін басу'
   ];
   const [items, setItems] = useState([
-    'Сақтау түймесін басу',
-    'Файл мәзірін ашу',
-    'Жобаға атау беру',
-    'Компьютерге сақтау дегенді басу'
+    { text: 'Сақтау түймесін басу', emoji: '✅👍' },
+    { text: 'Файл мәзірін ашу', emoji: '📂👆' },
+    { text: 'Жобаға атау беру', emoji: '✏️📝' },
+    { text: 'Компьютерге сақтау дегенді басу', emoji: '💾⬇️' },
   ]);
   const [feedback, setFeedback] = useState<boolean | null>(null);
   const [completed, setCompleted] = useState(false);
@@ -131,7 +143,7 @@ function Task1() {
   };
 
   const checkAnswer = () => {
-    const isCorrect = items.every((item, idx) => item === correctOrder[idx]);
+    const isCorrect = items.every((item, idx) => item.text === correctOrder[idx]);
     setFeedback(isCorrect);
     if (isCorrect && !completed) {
       completeTask('topic4', 'task1');
@@ -143,20 +155,23 @@ function Task1() {
     <div className="task-card">
       <h3 className="text-xl font-bold mb-4 flex items-center gap-3">
         <span className="step-number text-lg">1</span>
-        Тапсырма: Сақтау қадамдарын дұрыс реттеу
+        🔢 Тапсырма: Сақтау қадамдарын дұрыс реттеу 💾
       </h3>
-      <p className="text-muted-foreground mb-4">
+      <p className="text-muted-foreground mb-4 flex items-center gap-2">
+        <span className="text-xl">💾</span>
         Жобаны сақтау қадамдарын дұрыс ретке қой!
+        <span className="text-xl">⬆️⬇️</span>
       </p>
 
       <div className="space-y-3 mb-6">
         {items.map((item, index) => (
-          <div key={item} className="draggable-item flex items-center justify-between">
+          <div key={item.text} className="draggable-item flex items-center justify-between">
             <div className="flex items-center gap-3">
               <span className="w-8 h-8 rounded-full bg-secondary text-secondary-foreground flex items-center justify-center font-bold">
                 {index + 1}
               </span>
-              <span className="font-semibold">{item}</span>
+              <span className="text-2xl">{item.emoji}</span>
+              <span className="font-semibold">{item.text}</span>
             </div>
             <div className="flex gap-2">
               <button
@@ -177,7 +192,7 @@ function Task1() {
       </div>
 
       <button onClick={checkAnswer} className="btn-secondary">
-        Тексеру ✓
+        ✅ Тексеру
       </button>
 
       <TaskFeedback isCorrect={feedback} onClose={() => setFeedback(null)} />
@@ -204,45 +219,67 @@ function Task2() {
     <div className="task-card">
       <h3 className="text-xl font-bold mb-4 flex items-center gap-3">
         <span className="step-number text-lg">2</span>
-        Тапсырма: Қандай қадам жетіспейді?
+        🔍 Тапсырма: Қандай қадам жетіспейді? 🔍
       </h3>
-      <p className="text-muted-foreground mb-4">
-        Айбек жобаны сақтағысы келеді. Ол мына қадамдарды істеді:
-      </p>
-
-      <div className="card-fun bg-muted/50 mb-6">
-        <ol className="list-decimal list-inside space-y-2 text-lg">
-          <li>Файл мәзірін ашты</li>
-          <li>???</li>
-          <li>Жобаға атау берді</li>
-          <li>Сақтау түймесін басты</li>
-        </ol>
+      <div className="flex items-center gap-2 mb-4">
+        <span className="text-3xl">👦💻</span>
+        <p className="text-muted-foreground">
+          Айбек жобаны сақтағысы келеді. Ол мына қадамдарды істеді:
+        </p>
       </div>
 
-      <p className="font-bold mb-4">Қандай қадам жетіспейді?</p>
+      <div className="card-fun bg-muted/50 mb-6">
+        <div className="space-y-3 text-lg">
+          <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
+            <span className="text-2xl">1️⃣</span>
+            <span className="text-xl">📂👆</span>
+            <span>Файл мәзірін ашты</span>
+          </div>
+          <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg border-2 border-dashed border-destructive">
+            <span className="text-2xl">2️⃣</span>
+            <span className="text-3xl">❓❓❓</span>
+          </div>
+          <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
+            <span className="text-2xl">3️⃣</span>
+            <span className="text-xl">✏️📝</span>
+            <span>Жобаға атау берді</span>
+          </div>
+          <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
+            <span className="text-2xl">4️⃣</span>
+            <span className="text-xl">✅👍</span>
+            <span>Сақтау түймесін басты</span>
+          </div>
+        </div>
+      </div>
+
+      <p className="font-bold mb-4 flex items-center gap-2">
+        <span className="text-xl">❓</span>
+        Қандай қадам жетіспейді?
+      </p>
 
       <div className="space-y-3 mb-6">
         {[
-          { id: 1, text: 'Scratch-ты жапты' },
-          { id: 2, text: '"Компьютерге сақтау" дегенді басты' },
-          { id: 3, text: 'Компьютерді өшірді' },
+          { id: 1, text: 'Scratch-ты жапты', emoji: '❌💻' },
+          { id: 2, text: '"Компьютерге сақтау" дегенді басты', emoji: '💾⬇️' },
+          { id: 3, text: 'Компьютерді өшірді', emoji: '🔌❌' },
         ].map((option) => (
           <button
             key={option.id}
             onClick={() => setSelected(option.id)}
-            className={`w-full text-left p-4 rounded-xl border-2 transition-all ${
+            className={`w-full text-left p-4 rounded-xl border-2 transition-all flex items-center gap-4 ${
               selected === option.id
                 ? 'border-secondary bg-secondary/10'
                 : 'border-border hover:border-secondary/50'
             }`}
           >
-            <span className="font-semibold">{option.text}</span>
+            <span className="text-3xl">{option.emoji}</span>
+            <span className="font-semibold text-lg">{option.text}</span>
           </button>
         ))}
       </div>
 
       <button onClick={checkAnswer} className="btn-secondary" disabled={selected === null}>
-        Тексеру ✓
+        ✅ Тексеру
       </button>
 
       <TaskFeedback isCorrect={feedback} onClose={() => setFeedback(null)} />

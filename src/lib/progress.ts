@@ -30,6 +30,9 @@ const defaultProgress: Progress = {
     topic5: { completed: 0, total: 3, tasks: {} },
   },
   games: {
+    maze: { played: 0, won: 0 },
+    robot: { played: 0, won: 0 },
+    pattern: { played: 0, won: 0 },
     ordering: { played: 0, won: 0 },
     blocks: { played: 0, won: 0 },
     logic: { played: 0, won: 0 },

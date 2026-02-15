@@ -1,6 +1,17 @@
 import { useState, useEffect } from 'react';
 import { getProgress, badgeInfo, resetProgress, type Progress } from '@/lib/progress';
 
+import trophyImg from '@/assets/trophy.png';
+import scratchCatImg from '@/assets/scratch-cat.png';
+import puzzleImg from '@/assets/puzzle.png';
+import saveIconImg from '@/assets/save-icon.png';
+import openFolderImg from '@/assets/open-folder.png';
+import rocketImg from '@/assets/rocket.png';
+import gamepadImg from '@/assets/gamepad.png';
+import mazeImg from '@/assets/maze-game.png';
+import robotImg from '@/assets/robot.png';
+import patternImg from '@/assets/pattern.png';
+
 // Жетістіктер беті
 export default function AchievementsPage() {
   const [progress, setProgress] = useState<Progress | null>(null);
@@ -11,18 +22,21 @@ export default function AchievementsPage() {
 
   if (!progress) return null;
 
-  const topicNames: Record<string, { name: string; emoji: string }> = {
-    topic1: { name: 'Менің алғашқы программам', emoji: '📝✨' },
-    topic2: { name: 'Scratch жоба құру', emoji: '🧩🐱' },
-    topic3: { name: 'Жобалық жұмыс (1)', emoji: '📁🎯' },
-    topic4: { name: 'Scratch сақтау', emoji: '💾📂' },
-    topic5: { name: 'Жобалық жұмыс (2)', emoji: '📂🚀' },
+  const topicImages: Record<string, { name: string; image: string }> = {
+    topic1: { name: 'Менің алғашқы программам', image: scratchCatImg },
+    topic2: { name: 'Scratch жоба құру', image: puzzleImg },
+    topic3: { name: 'Жобалық жұмыс (1)', image: openFolderImg },
+    topic4: { name: 'Scratch сақтау', image: saveIconImg },
+    topic5: { name: 'Жобалық жұмыс (2)', image: rocketImg },
   };
 
-  const gameNames: Record<string, { name: string; emoji: string }> = {
-    ordering: { name: 'Алгоритм реттеу', emoji: '📋🔢' },
-    blocks: { name: 'Блоктар ойыны', emoji: '🧱🧩' },
-    logic: { name: 'Логика ойыны', emoji: '🧠💭' },
+  const gameImages: Record<string, { name: string; image: string }> = {
+    ordering: { name: 'Алгоритм реттеу', image: puzzleImg },
+    blocks: { name: 'Блоктар ойыны', image: scratchCatImg },
+    logic: { name: 'Логика ойыны', image: patternImg },
+    maze: { name: 'Лабиринт', image: mazeImg },
+    robot: { name: 'Робот бағдарламашы', image: robotImg },
+    pattern: { name: 'Кезектілік', image: patternImg },
   };
 
   const handleReset = () => {
@@ -37,16 +51,14 @@ export default function AchievementsPage() {
       <div className="max-w-4xl mx-auto">
         {/* Title */}
         <header className="text-center mb-10">
-          <span className="text-6xl mb-4 block animate-sparkle">🏆</span>
+          <img src={trophyImg} alt="Жетістіктер" className="w-20 h-20 mx-auto mb-4 animate-sparkle" />
           <h1 className="section-title">🏆 Менің жетістіктерім 🏆</h1>
-          <p className="text-xl text-muted-foreground">
-            ⭐ Сенің барлық жеңістерің осында! ⭐
-          </p>
+          <p className="text-xl text-muted-foreground">⭐ Сенің барлық жеңістерің осында! ⭐</p>
         </header>
 
         {/* Total stars */}
         <section className="card-topic border-primary mb-8 text-center">
-          <div className="text-6xl mb-4">⭐🌟⭐</div>
+          <img src={trophyImg} alt="Жұлдыздар" className="w-16 h-16 mx-auto mb-4" />
           <h2 className="text-3xl font-bold mb-4">
             Жалпы жұлдыздар: {progress.totalStars} ⭐
           </h2>
@@ -61,7 +73,8 @@ export default function AchievementsPage() {
         {/* Badges */}
         <section className="mb-10">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-            <span>🎖️🏅</span> Медальдар
+            <img src={trophyImg} alt="Медальдар" className="w-8 h-8 rounded-lg" />
+            Медальдар
           </h2>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -92,31 +105,25 @@ export default function AchievementsPage() {
 
         {/* Topic progress */}
         <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-            <span>📚📖</span> Тақырыптар бойынша
-          </h2>
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">📚 Тақырыптар бойынша</h2>
           
           <div className="space-y-4">
             {Object.entries(progress.topics).map(([id, topic]) => {
               const percentage = Math.round((topic.completed / topic.total) * 100);
-              const topicInfo = topicNames[id] || { name: id, emoji: '📝' };
+              const topicInfo = topicImages[id] || { name: id, image: scratchCatImg };
               return (
                 <div key={id} className="card-fun">
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="font-bold flex items-center gap-2">
-                      <span className="text-2xl">{topicInfo.emoji}</span>
+                      <img src={topicInfo.image} alt={topicInfo.name} className="w-10 h-10 rounded-lg" />
                       {topicInfo.name}
                     </h3>
                     <span className="text-lg font-bold text-accent flex items-center gap-1">
-                      {topic.completed}/{topic.total}
-                      <span className="text-xl">⭐</span>
+                      {topic.completed}/{topic.total} ⭐
                     </span>
                   </div>
                   <div className="progress-bar">
-                    <div 
-                      className="progress-fill" 
-                      style={{ width: `${percentage}%` }}
-                    />
+                    <div className="progress-fill" style={{ width: `${percentage}%` }} />
                   </div>
                   <p className="text-sm text-muted-foreground mt-2">
                     {percentage === 100 ? '🎉✅ Толық орындалды!' : `${percentage}% орындалды 📈`}
@@ -130,24 +137,23 @@ export default function AchievementsPage() {
         {/* Games stats */}
         <section className="mb-10">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-            <span>🎮🎯</span> Ойындар статистикасы
+            <img src={gamepadImg} alt="Ойындар" className="w-8 h-8 rounded-lg" />
+            Ойындар статистикасы
           </h2>
           
           <div className="grid sm:grid-cols-3 gap-6">
             {Object.entries(progress.games).map(([id, game]) => {
-              const gameInfo = gameNames[id] || { name: id, emoji: '🎮' };
+              const gameInfo = gameImages[id] || { name: id, image: gamepadImg };
               return (
                 <div key={id} className="card-fun text-center">
-                  <span className="text-4xl block mb-3">{gameInfo.emoji}</span>
+                  <img src={gameInfo.image} alt={gameInfo.name} className="w-12 h-12 mx-auto mb-3 rounded-lg" />
                   <h3 className="font-bold mb-2">{gameInfo.name}</h3>
                   <div className="text-lg">
                     <p className="flex items-center justify-center gap-2">
-                      <span>🎮</span>
-                      Ойнады: <span className="font-bold">{game.played}</span>
+                      🎮 Ойнады: <span className="font-bold">{game.played}</span>
                     </p>
                     <p className="text-accent flex items-center justify-center gap-2">
-                      <span>🏆</span>
-                      Жеңді: <span className="font-bold">{game.won}</span> ⭐
+                      🏆 Жеңді: <span className="font-bold">{game.won}</span> ⭐
                     </p>
                   </div>
                 </div>
@@ -162,8 +168,7 @@ export default function AchievementsPage() {
             onClick={handleReset}
             className="text-muted-foreground hover:text-destructive transition-colors text-sm flex items-center gap-2 mx-auto"
           >
-            <span>🗑️</span>
-            Жетістіктерді өшіру
+            🗑️ Жетістіктерді өшіру
           </button>
         </div>
       </div>

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { StepCard } from '@/components/StepCard';
 import { TaskFeedback } from '@/components/TaskFeedback';
 import { ScratchBlock } from '@/components/ScratchBlock';
+import { BlockBuilder, BlockDef } from '@/components/BlockBuilder';
+import { ScratchEmbed } from '@/components/ScratchEmbed';
 import { completeTask } from '@/lib/progress';
 
 // Image imports
@@ -25,7 +27,15 @@ import drinkTeaImg from '@/assets/drink-tea.png';
 import scratchCatImg from '@/assets/scratch-cat.png';
 import catHelloImg from '@/assets/cat-hello.png';
 
-// Тақырып 1: Менің алғашқы программам (сызықтық алгоритм)
+const task4Blocks: BlockDef[] = [
+  { id: 'flag', type: 'events', label: '🏳️ жасыл жалауша басылғанда' },
+  { id: 'move1', type: 'motion', label: '🚶 10 қадам жүру' },
+  { id: 'say', type: 'looks', label: '💬 "Сәлем!" деп айту' },
+  { id: 'wait', type: 'control', label: '⏳ 2 секунд күту' },
+  { id: 'move2', type: 'motion', label: '🚶 10 қадам жүру' },
+];
+
+// Тақырып 1: Менің алғашқы программам
 export default function Topic1() {
   return (
     <div className="min-h-screen py-8 px-4">
@@ -100,6 +110,17 @@ export default function Topic1() {
           <Task3 />
           <Task4 />
         </div>
+
+        {/* Scratch Editor */}
+        <div className="mt-10">
+          <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
+            🐱 Scratch редакторы
+          </h2>
+          <p className="text-muted-foreground mb-4">
+            Блоктарды жинағаннан кейін, Scratch-та программалап көр!
+          </p>
+          <ScratchEmbed />
+        </div>
       </div>
     </div>
   );
@@ -161,7 +182,6 @@ function Task1() {
         Таңертең мектепке қалай жиналасың? Қадамдарды дұрыс ретке қой!
         <span className="text-xl">⬆️⬇️</span>
       </p>
-
       <div className="space-y-3 mb-6">
         {items.map((item, index) => (
           <div key={item.text} className="draggable-item flex items-center justify-between">
@@ -173,29 +193,13 @@ function Task1() {
               <span className="font-semibold">{item.text}</span>
             </div>
             <div className="flex gap-2">
-              <button
-                onClick={() => moveUp(index)}
-                className="w-10 h-10 rounded-lg bg-muted hover:bg-secondary hover:text-secondary-foreground transition-colors text-xl"
-                aria-label="Жоғары"
-              >
-                ⬆️
-              </button>
-              <button
-                onClick={() => moveDown(index)}
-                className="w-10 h-10 rounded-lg bg-muted hover:bg-secondary hover:text-secondary-foreground transition-colors text-xl"
-                aria-label="Төмен"
-              >
-                ⬇️
-              </button>
+              <button onClick={() => moveUp(index)} className="w-10 h-10 rounded-lg bg-muted hover:bg-secondary hover:text-secondary-foreground transition-colors text-xl" aria-label="Жоғары">⬆️</button>
+              <button onClick={() => moveDown(index)} className="w-10 h-10 rounded-lg bg-muted hover:bg-secondary hover:text-secondary-foreground transition-colors text-xl" aria-label="Төмен">⬇️</button>
             </div>
           </div>
         ))}
       </div>
-
-      <button onClick={checkAnswer} className="btn-secondary">
-        ✅ Тексеру
-      </button>
-
+      <button onClick={checkAnswer} className="btn-secondary">✅ Тексеру</button>
       <TaskFeedback isCorrect={feedback} onClose={() => setFeedback(null)} />
     </div>
   );
@@ -222,12 +226,9 @@ function Task2() {
         <span className="step-number text-lg">2</span>
         ❓ Тапсырма: Келесі қадамды таңда ❓
       </h3>
-      
       <div className="card-fun bg-muted/50 mb-6">
         <img src={girlTeaImg} alt="Айгерім шай дайындайды" className="w-24 h-24 mx-auto mb-3 rounded-xl" />
-        <p className="text-lg text-center">
-          <strong>Әңгіме:</strong> Айгерім шай дайындағысы келеді.
-        </p>
+        <p className="text-lg text-center"><strong>Әңгіме:</strong> Айгерім шай дайындағысы келеді.</p>
         <div className="flex items-center justify-center gap-2 my-3">
           <img src={pourWaterImg} alt="Су құю" className="w-10 h-10 rounded-lg" />
           <span className="text-2xl">➡️</span>
@@ -235,38 +236,21 @@ function Task2() {
           <span className="text-2xl">➡️</span>
           <span className="text-3xl">❓</span>
         </div>
-        <p className="text-lg text-center">
-          Ол шәйнекке су құйды және суды қайнатты. 
-          <br />
-          <strong>Келесі не істеу керек?</strong>
-        </p>
+        <p className="text-lg text-center">Ол шәйнекке су құйды және суды қайнатты.<br /><strong>Келесі не істеу керек?</strong></p>
       </div>
-
       <div className="space-y-3 mb-6">
         {[
           { id: 1, text: 'Шайды іш', image: drinkTeaImg },
           { id: 2, text: 'Шай пакетін сал', image: teaBagImg },
           { id: 3, text: 'Суды құй', image: pourWaterImg },
         ].map((option) => (
-          <button
-            key={option.id}
-            onClick={() => setSelected(option.id)}
-            className={`w-full text-left p-4 rounded-xl border-2 transition-all flex items-center gap-4 ${
-              selected === option.id
-                ? 'border-secondary bg-secondary/10'
-                : 'border-border hover:border-secondary/50'
-            }`}
-          >
+          <button key={option.id} onClick={() => setSelected(option.id)} className={`w-full text-left p-4 rounded-xl border-2 transition-all flex items-center gap-4 ${selected === option.id ? 'border-secondary bg-secondary/10' : 'border-border hover:border-secondary/50'}`}>
             <img src={option.image} alt={option.text} className="w-12 h-12 rounded-lg object-cover" />
             <span className="font-semibold text-lg">{option.text}</span>
           </button>
         ))}
       </div>
-
-      <button onClick={checkAnswer} className="btn-secondary" disabled={selected === null}>
-        ✅ Тексеру
-      </button>
-
+      <button onClick={checkAnswer} className="btn-secondary" disabled={selected === null}>✅ Тексеру</button>
       <TaskFeedback isCorrect={feedback} onClose={() => setFeedback(null)} />
     </div>
   );
@@ -281,7 +265,7 @@ function Task3() {
   const steps = [
     { id: 1, text: 'Тіс щеткасын ал', image: toothbrushImg },
     { id: 2, text: 'Тіс пастасын жақ', image: toothpasteImg },
-    { id: 3, text: 'Ұйықтап кет', image: sleepingImg }, // Wrong step!
+    { id: 3, text: 'Ұйықтап кет', image: sleepingImg },
     { id: 4, text: 'Тісіңді жу', image: brushTeethImg },
     { id: 5, text: 'Аузыңды шай', image: rinseMouthImg },
   ];
@@ -303,41 +287,19 @@ function Task3() {
       </h3>
       <div className="flex items-center gap-2 mb-4">
         <img src={brushTeethImg} alt="Тіс тазалау" className="w-10 h-10 rounded-lg" />
-        <p className="text-muted-foreground">
-          Төменде тіс тазалау алгоритмі берілген. Бірақ бір қадам қате! 
-          ❌ Қате қадамды тап!
-        </p>
+        <p className="text-muted-foreground">Төменде тіс тазалау алгоритмі берілген. Бірақ бір қадам қате! ❌ Қате қадамды тап!</p>
       </div>
-
       <div className="space-y-3 mb-6">
         {steps.map((step) => (
-          <button
-            key={step.id}
-            onClick={() => setSelected(step.id)}
-            className={`w-full text-left p-4 rounded-xl border-2 transition-all flex items-center gap-3 ${
-              selected === step.id
-                ? 'border-destructive bg-destructive/10'
-                : 'border-border hover:border-muted-foreground'
-            }`}
-          >
-            <span className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold">
-              {step.id}
-            </span>
+          <button key={step.id} onClick={() => setSelected(step.id)} className={`w-full text-left p-4 rounded-xl border-2 transition-all flex items-center gap-3 ${selected === step.id ? 'border-destructive bg-destructive/10' : 'border-border hover:border-muted-foreground'}`}>
+            <span className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold">{step.id}</span>
             <img src={step.image} alt={step.text} className="w-10 h-10 rounded-lg object-cover" />
             <span className="font-semibold">{step.text}</span>
           </button>
         ))}
       </div>
-
-      <button onClick={checkAnswer} className="btn-secondary" disabled={selected === null}>
-        ✅ Тексеру
-      </button>
-
-      <TaskFeedback 
-        isCorrect={feedback} 
-        correctMessage="🎉 Жарайсың! 'Ұйықтап кет' — бұл қате қадам! 😄"
-        onClose={() => setFeedback(null)} 
-      />
+      <button onClick={checkAnswer} className="btn-secondary" disabled={selected === null}>✅ Тексеру</button>
+      <TaskFeedback isCorrect={feedback} correctMessage="🎉 Жарайсың! 'Ұйықтап кет' — бұл қате қадам! 😄" onClose={() => setFeedback(null)} />
     </div>
   );
 }
@@ -346,69 +308,65 @@ function Task3() {
 function Task4() {
   const [completed, setCompleted] = useState(false);
 
-  const markComplete = () => {
-    if (!completed) {
-      completeTask('topic1', 'task4');
-      setCompleted(true);
-    }
-  };
-
   return (
     <div className="task-card">
       <h3 className="text-xl font-bold mb-4 flex items-center gap-3">
         <span className="step-number text-lg">4</span>
         <img src={scratchCatImg} alt="Scratch мысығы" className="w-8 h-8 rounded-lg" />
         Тапсырма: Scratch-та алгоритм құр
-        <img src={scratchCatImg} alt="Scratch мысығы" className="w-8 h-8 rounded-lg" />
       </h3>
       
       <div className="card-fun bg-gradient-to-br from-secondary/10 to-accent/10 mb-6">
         <img src={catHelloImg} alt="Мысық сәлем" className="w-24 h-24 mx-auto mb-3 rounded-xl" />
         <p className="text-lg mb-4 text-center">
-          <strong>Тапсырма:</strong> Scratch программасын аш және мысық спрайтын программала:
+          <strong>Тапсырма:</strong> Блоктарды дұрыс ретке қой:
         </p>
         <div className="space-y-3 text-lg">
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
             <span className="text-2xl">1️⃣</span>
-            <img src={scratchCatImg} alt="Мысық жүреді" className="w-8 h-8 rounded-lg" />
-            <span>Мысық 10 қадам алға жүрсін</span>
+            <img src={scratchCatImg} alt="Жалауша" className="w-8 h-8 rounded-lg" />
+            <span>Жасыл жалауша басылғанда</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
             <span className="text-2xl">2️⃣</span>
-            <img src={catHelloImg} alt="Мысық сөйлейді" className="w-8 h-8 rounded-lg" />
-            <span>Мысық "Сәлем!" деп айтсын</span>
+            <img src={scratchCatImg} alt="Жүру" className="w-8 h-8 rounded-lg" />
+            <span>Мысық 10 қадам жүрсін</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
             <span className="text-2xl">3️⃣</span>
+            <img src={catHelloImg} alt="Сөйлеу" className="w-8 h-8 rounded-lg" />
+            <span>Мысық "Сәлем!" деп айтсын</span>
+          </div>
+          <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
+            <span className="text-2xl">4️⃣</span>
             <img src={waitTimerImg} alt="Күту" className="w-8 h-8 rounded-lg" />
             <span>2 секунд күтсін</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
-            <span className="text-2xl">4️⃣</span>
-            <img src={scratchCatImg} alt="Мысық жүреді" className="w-8 h-8 rounded-lg" />
-            <span>Мысық тағы 10 қадам жүрсін</span>
+            <span className="text-2xl">5️⃣</span>
+            <img src={scratchCatImg} alt="Жүру" className="w-8 h-8 rounded-lg" />
+            <span>Тағы 10 қадам жүрсін</span>
           </div>
         </div>
       </div>
 
       <div className="mb-6">
-        <p className="font-bold mb-3 flex items-center gap-2">
-          🧩 Қажетті блоктар:
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <ScratchBlock type="events">🏳️ жасыл жалауша басылғанда</ScratchBlock>
-          <ScratchBlock type="motion">🚶 10 қадам жүру</ScratchBlock>
-          <ScratchBlock type="looks">💬 "Сәлем!" деп айту</ScratchBlock>
-          <ScratchBlock type="control">⏳ 2 секунд күту</ScratchBlock>
-        </div>
+        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Блоктарды жина:</h4>
+        <BlockBuilder
+          availableBlocks={task4Blocks}
+          correctOrder={['flag', 'move1', 'say', 'wait', 'move2']}
+          onComplete={() => {
+            if (!completed) {
+              completeTask('topic1', 'task4');
+              setCompleted(true);
+            }
+          }}
+        />
       </div>
 
-      <button 
-        onClick={markComplete} 
-        className={`${completed ? 'btn-accent' : 'btn-secondary'}`}
-      >
-        {completed ? '✅ Орындалды!' : '👍 Орындадым'}
-      </button>
+      {completed && (
+        <div className="feedback-correct animate-pop">✅ Орындалды! ⭐</div>
+      )}
     </div>
   );
 }

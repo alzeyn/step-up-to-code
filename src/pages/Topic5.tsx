@@ -1,24 +1,48 @@
 import { useState } from 'react';
 import { ScratchBlock } from '@/components/ScratchBlock';
+import { BlockBuilder, BlockDef } from '@/components/BlockBuilder';
+import { ScratchEmbed } from '@/components/ScratchEmbed';
 import { completeTask } from '@/lib/progress';
 
 import scratchCatImg from '@/assets/scratch-cat.png';
 import catHelloImg from '@/assets/cat-hello.png';
 import rocketImg from '@/assets/rocket.png';
 
+const micro1Blocks: BlockDef[] = [
+  { id: 'flag', type: 'events', label: '🏳️ жасыл жалауша' },
+  { id: 'repeat', type: 'control', label: '🔄 4 рет қайталау' },
+  { id: 'move', type: 'motion', label: '🚶 100 қадам жүру' },
+  { id: 'turn', type: 'motion', label: '↩️ 90 градусқа бұрылу' },
+];
+
+const micro2Blocks: BlockDef[] = [
+  { id: 'flag', type: 'events', label: '🏳️ жасыл жалауша' },
+  { id: 'say1', type: 'looks', label: '💬 "Сәлем!" деп 2 секунд' },
+  { id: 'size120', type: 'looks', label: '📈 Өлшемді 120% ету' },
+  { id: 'wait', type: 'control', label: '⏳ 1 секунд күту' },
+  { id: 'size100', type: 'looks', label: '📉 Өлшемді 100% ету' },
+  { id: 'say2', type: 'looks', label: '💬 "Қалың қалай?"' },
+];
+
+const micro3Blocks: BlockDef[] = [
+  { id: 'click', type: 'events', label: '👆 Осы спрайт басылғанда' },
+  { id: 'up', type: 'motion', label: '⬆️ y-ты 50-ге өзгерту' },
+  { id: 'sound', type: 'sound', label: '🔊 Дыбыс ойнату' },
+  { id: 'wait', type: 'control', label: '⏳ 0.5 секунд күту' },
+  { id: 'down', type: 'motion', label: '⬇️ y-ты -50-ге өзгерту' },
+];
+
 // Тақырып 5: Жобалық жұмыс (2)
 export default function Topic5() {
   return (
     <div className="min-h-screen py-8 px-4">
       <div className="max-w-4xl mx-auto">
-        {/* Title */}
         <header className="text-center mb-10">
           <img src={rocketImg} alt="Жоба" className="w-20 h-20 mx-auto mb-4 animate-wiggle" />
           <h1 className="section-title">🚀 Жобалық жұмыс (2) 🚀</h1>
           <p className="text-xl text-muted-foreground">⭐ Қосымша тапсырмалар ⭐</p>
         </header>
 
-        {/* Intro */}
         <section className="card-topic border-pink mb-8">
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
             <img src={rocketImg} alt="Жаңа деңгей" className="w-10 h-10 rounded-lg" />
@@ -29,35 +53,30 @@ export default function Topic5() {
             <img src={catHelloImg} alt="Сәлем" className="w-14 h-14 rounded-lg" />
           </div>
           <p className="text-lg leading-relaxed">
-            Сен қазір көп нәрсе білесің! 🧠
-            <br />
-            Енді қиынырақ тапсырмаларды орындап көр. 💪
-            <br />
-            Бұл тапсырмалар сенің шеберлігіңді дамытады! ⬆️
+            Сен қазір көп нәрсе білесің! 🧠<br />
+            Енді блоктарды жинап, Scratch-та тексер! 💪
           </p>
         </section>
 
-        {/* Tasks */}
         <div className="space-y-8">
           <MicroTask1 />
           <MicroTask2 />
           <MicroTask3 />
+        </div>
+
+        {/* Scratch Editor */}
+        <div className="mt-10">
+          <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">🐱 Scratch редакторы</h2>
+          <p className="text-muted-foreground mb-4">Блоктарды жинағаннан кейін, Scratch-та программалап көр!</p>
+          <ScratchEmbed />
         </div>
       </div>
     </div>
   );
 }
 
-// Микро-тапсырма 1: Шаршы бойынша жүру
 function MicroTask1() {
   const [completed, setCompleted] = useState(false);
-
-  const markComplete = () => {
-    if (!completed) {
-      completeTask('topic5', 'micro1');
-      setCompleted(true);
-    }
-  };
 
   return (
     <div className="task-card">
@@ -97,32 +116,28 @@ function MicroTask1() {
       </div>
 
       <div className="mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Қажетті блоктар:</h4>
-        <div className="flex flex-wrap gap-3">
-          <ScratchBlock type="events">🏳️ жасыл жалауша</ScratchBlock>
-          <ScratchBlock type="control">🔄 4 рет қайталау</ScratchBlock>
-          <ScratchBlock type="motion">🚶 100 қадам жүру</ScratchBlock>
-          <ScratchBlock type="motion">↩️ 90 градусқа бұрылу</ScratchBlock>
-        </div>
+        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Блоктарды жина:</h4>
+        <BlockBuilder
+          availableBlocks={micro1Blocks}
+          correctOrder={['flag', 'repeat', 'move', 'turn']}
+          onComplete={() => {
+            if (!completed) {
+              completeTask('topic5', 'micro1');
+              setCompleted(true);
+            }
+          }}
+        />
       </div>
 
-      <button onClick={markComplete} className={completed ? 'btn-accent' : 'btn-secondary'}>
-        {completed ? '✅ Орындалды!' : '👍 Орындадым'}
-      </button>
+      {completed && (
+        <div className="feedback-correct animate-pop">✅ Орындалды! ⭐</div>
+      )}
     </div>
   );
 }
 
-// Микро-тапсырма 2: Сәлемдесу анимациясы
 function MicroTask2() {
   const [completed, setCompleted] = useState(false);
-
-  const markComplete = () => {
-    if (!completed) {
-      completeTask('topic5', 'micro2');
-      setCompleted(true);
-    }
-  };
 
   return (
     <div className="task-card">
@@ -166,33 +181,28 @@ function MicroTask2() {
       </div>
 
       <div className="mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Қажетті блоктар:</h4>
-        <div className="flex flex-wrap gap-3">
-          <ScratchBlock type="events">🏳️ жасыл жалауша</ScratchBlock>
-          <ScratchBlock type="looks">💬 "..." деп 2 секунд айту</ScratchBlock>
-          <ScratchBlock type="looks">📈 Өлшемді 120% ету</ScratchBlock>
-          <ScratchBlock type="control">⏳ 1 секунд күту</ScratchBlock>
-          <ScratchBlock type="looks">📉 Өлшемді 100% ету</ScratchBlock>
-        </div>
+        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Блоктарды жина:</h4>
+        <BlockBuilder
+          availableBlocks={micro2Blocks}
+          correctOrder={['flag', 'say1', 'size120', 'wait', 'size100', 'say2']}
+          onComplete={() => {
+            if (!completed) {
+              completeTask('topic5', 'micro2');
+              setCompleted(true);
+            }
+          }}
+        />
       </div>
 
-      <button onClick={markComplete} className={completed ? 'btn-accent' : 'btn-secondary'}>
-        {completed ? '✅ Орындалды!' : '👍 Орындадым'}
-      </button>
+      {completed && (
+        <div className="feedback-correct animate-pop">✅ Орындалды! ⭐</div>
+      )}
     </div>
   );
 }
 
-// Микро-тапсырма 3: Басқанда реакция
 function MicroTask3() {
   const [completed, setCompleted] = useState(false);
-
-  const markComplete = () => {
-    if (!completed) {
-      completeTask('topic5', 'micro3');
-      setCompleted(true);
-    }
-  };
 
   return (
     <div className="task-card">
@@ -231,19 +241,22 @@ function MicroTask3() {
       </div>
 
       <div className="mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Қажетті блоктар:</h4>
-        <div className="flex flex-wrap gap-3">
-          <ScratchBlock type="events">👆 Осы спрайт басылғанда</ScratchBlock>
-          <ScratchBlock type="motion">⬆️ y-ты 50-ге өзгерту</ScratchBlock>
-          <ScratchBlock type="sound">🔊 Дыбыс ойнату</ScratchBlock>
-          <ScratchBlock type="control">⏳ 0.5 секунд күту</ScratchBlock>
-          <ScratchBlock type="motion">⬇️ y-ты -50-ге өзгерту</ScratchBlock>
-        </div>
+        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Блоктарды жина:</h4>
+        <BlockBuilder
+          availableBlocks={micro3Blocks}
+          correctOrder={['click', 'up', 'sound', 'wait', 'down']}
+          onComplete={() => {
+            if (!completed) {
+              completeTask('topic5', 'micro3');
+              setCompleted(true);
+            }
+          }}
+        />
       </div>
 
-      <button onClick={markComplete} className={completed ? 'btn-accent' : 'btn-secondary'}>
-        {completed ? '✅ Орындалды!' : '👍 Орындадым'}
-      </button>
+      {completed && (
+        <div className="feedback-correct animate-pop">✅ Орындалды! ⭐</div>
+      )}
     </div>
   );
 }

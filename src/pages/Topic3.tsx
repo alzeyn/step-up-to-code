@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { ScratchBlock } from '@/components/ScratchBlock';
+import { BlockBuilder, BlockDef } from '@/components/BlockBuilder';
+import { ScratchEmbed } from '@/components/ScratchEmbed';
 import { completeTask } from '@/lib/progress';
 
 import goToSchoolImg from '@/assets/go-to-school.png';
@@ -9,20 +11,19 @@ import catDanceImg from '@/assets/cat-dance.png';
 import catHelloImg from '@/assets/cat-hello.png';
 import greenFlagImg from '@/assets/green-flag.png';
 import houseImg from '@/assets/house.png';
+import puzzleImg from '@/assets/puzzle.png';
 
 // Тақырып 3: Жобалық жұмыс (1)
 export default function Topic3() {
   return (
     <div className="min-h-screen py-8 px-4">
       <div className="max-w-4xl mx-auto">
-        {/* Title */}
         <header className="text-center mb-10">
           <img src={puzzleImg} alt="Жоба" className="w-20 h-20 mx-auto mb-4 animate-float" />
           <h1 className="section-title">🎯 Жобалық жұмыс 🎯</h1>
           <p className="text-xl text-muted-foreground">✨ Өз жобаңды жаса! ✨</p>
         </header>
 
-        {/* Intro */}
         <section className="card-topic border-accent mb-8">
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
             🎯 Жобалық жұмыс дегеніміз не? 🤔
@@ -33,40 +34,46 @@ export default function Topic3() {
             <img src={goToSchoolImg} alt="Мектеп" className="w-14 h-14 rounded-lg" />
           </div>
           <p className="text-lg leading-relaxed">
-            Бұл бөлімде сен өз бетіңше шағын жобалар жасайсың! 
+            Бұл бөлімде сен өз бетіңше шағын жобалар жасайсың!
             <br />
             <span className="flex items-center gap-2 mt-2">
-              👉 Scratch-ты аш және төмендегі сценарийлерді программала.
-            </span>
-            <span className="flex items-center gap-2 mt-2">
-              🌈 Сенің қиялыңды көрсет!
+              👉 Блоктарды сүйреп жина, содан кейін Scratch-та тексер!
             </span>
           </p>
         </section>
 
-        {/* Projects */}
         <div className="space-y-8">
           <Project1 />
           <Project2 />
           <Project3 />
+        </div>
+
+        {/* Scratch Editor */}
+        <div className="mt-10">
+          <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
+            🐱 Scratch редакторы
+          </h2>
+          <p className="text-muted-foreground mb-4">
+            Жоғарыдағы блоктарды жинағаннан кейін, мұнда Scratch-та программалап көр!
+          </p>
+          <ScratchEmbed />
         </div>
       </div>
     </div>
   );
 }
 
-import puzzleImg from '@/assets/puzzle.png';
+const project1Blocks: BlockDef[] = [
+  { id: 'flag', type: 'events', label: '🏳️ жасыл жалауша' },
+  { id: 'say1', type: 'looks', label: '💬 "Мен мектепке барамын!"' },
+  { id: 'move', type: 'motion', label: '🚶 50 қадам жүру' },
+  { id: 'wait', type: 'control', label: '⏳ 1 секунд күту' },
+  { id: 'say2', type: 'looks', label: '💬 "Сәлем, достар!"' },
+  { id: 'costume', type: 'looks', label: '👗 Костюмді ауыстыру' },
+];
 
-// Жоба 1: Үйден мектепке
 function Project1() {
   const [completed, setCompleted] = useState(false);
-
-  const markComplete = () => {
-    if (!completed) {
-      completeTask('topic3', 'project1');
-      setCompleted(true);
-    }
-  };
 
   return (
     <div className="task-card">
@@ -120,34 +127,39 @@ function Project1() {
         </div>
       </div>
 
+      {/* Interactive Block Builder */}
       <div className="mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Ұсынылатын блоктар:</h4>
-        <div className="flex flex-wrap gap-3">
-          <ScratchBlock type="events">🏳️ жасыл жалауша</ScratchBlock>
-          <ScratchBlock type="looks">💬 "..." деп айту</ScratchBlock>
-          <ScratchBlock type="motion">🚶 50 қадам жүру</ScratchBlock>
-          <ScratchBlock type="control">⏳ 1 секунд күту</ScratchBlock>
-          <ScratchBlock type="looks">👗 Костюмді ауыстыру</ScratchBlock>
-        </div>
+        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Блоктарды жина:</h4>
+        <BlockBuilder
+          availableBlocks={project1Blocks}
+          correctOrder={['flag', 'say1', 'move', 'wait', 'say2', 'costume']}
+          onComplete={() => {
+            if (!completed) {
+              completeTask('topic3', 'project1');
+              setCompleted(true);
+            }
+          }}
+        />
       </div>
 
-      <button onClick={markComplete} className={completed ? 'btn-accent' : 'btn-secondary'}>
-        {completed ? '✅ Жоба орындалды!' : '👍 Жобаны орындадым'}
-      </button>
+      {completed && (
+        <div className="feedback-correct animate-pop">✅ Жоба орындалды! ⭐</div>
+      )}
     </div>
   );
 }
 
-// Жоба 2: Ұшатын шар
+const project2Blocks: BlockDef[] = [
+  { id: 'flag', type: 'events', label: '🏳️ жасыл жалауша' },
+  { id: 'goto', type: 'motion', label: '📍 y: -100 нүктесіне бару' },
+  { id: 'repeat', type: 'control', label: '🔄 10 рет қайталау' },
+  { id: 'changey', type: 'motion', label: '⬆️ y-ты 10-ға өзгерту' },
+  { id: 'say', type: 'looks', label: '💬 "Сәлем!" деп 2 секунд' },
+  { id: 'hide', type: 'looks', label: '👻 Жасыру' },
+];
+
 function Project2() {
   const [completed, setCompleted] = useState(false);
-
-  const markComplete = () => {
-    if (!completed) {
-      completeTask('topic3', 'project2');
-      setCompleted(true);
-    }
-  };
 
   return (
     <div className="task-card">
@@ -193,34 +205,36 @@ function Project2() {
       </div>
 
       <div className="mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Ұсынылатын блоктар:</h4>
-        <div className="flex flex-wrap gap-3">
-          <ScratchBlock type="events">🏳️ жасыл жалауша</ScratchBlock>
-          <ScratchBlock type="motion">📍 y: -100 нүктесіне бару</ScratchBlock>
-          <ScratchBlock type="control">🔄 10 рет қайталау</ScratchBlock>
-          <ScratchBlock type="motion">⬆️ y-ты 10-ға өзгерту</ScratchBlock>
-          <ScratchBlock type="looks">💬 "Сәлем!" деп 2 секунд айту</ScratchBlock>
-          <ScratchBlock type="looks">👻 Жасыру</ScratchBlock>
-        </div>
+        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Блоктарды жина:</h4>
+        <BlockBuilder
+          availableBlocks={project2Blocks}
+          correctOrder={['flag', 'goto', 'repeat', 'changey', 'say', 'hide']}
+          onComplete={() => {
+            if (!completed) {
+              completeTask('topic3', 'project2');
+              setCompleted(true);
+            }
+          }}
+        />
       </div>
 
-      <button onClick={markComplete} className={completed ? 'btn-accent' : 'btn-secondary'}>
-        {completed ? '✅ Жоба орындалды!' : '👍 Жобаны орындадым'}
-      </button>
+      {completed && (
+        <div className="feedback-correct animate-pop">✅ Жоба орындалды! ⭐</div>
+      )}
     </div>
   );
 }
 
-// Жоба 3: Билейтін мысық
+const project3Blocks: BlockDef[] = [
+  { id: 'flag', type: 'events', label: '🏳️ жасыл жалауша' },
+  { id: 'forever', type: 'control', label: '♾️ Мәңгі қайталау' },
+  { id: 'costume', type: 'looks', label: '👗 Келесі костюм' },
+  { id: 'wait', type: 'control', label: '⏳ 0.3 секунд күту' },
+  { id: 'turn', type: 'motion', label: '↩️ 15 градусқа бұрылу' },
+];
+
 function Project3() {
   const [completed, setCompleted] = useState(false);
-
-  const markComplete = () => {
-    if (!completed) {
-      completeTask('topic3', 'project3');
-      setCompleted(true);
-    }
-  };
 
   return (
     <div className="task-card">
@@ -266,19 +280,22 @@ function Project3() {
       </div>
 
       <div className="mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Ұсынылатын блоктар:</h4>
-        <div className="flex flex-wrap gap-3">
-          <ScratchBlock type="events">🏳️ жасыл жалауша</ScratchBlock>
-          <ScratchBlock type="control">♾️ Мәңгі қайталау</ScratchBlock>
-          <ScratchBlock type="looks">👗 Келесі костюм</ScratchBlock>
-          <ScratchBlock type="control">⏳ 0.3 секунд күту</ScratchBlock>
-          <ScratchBlock type="motion">↩️ 15 градусқа бұрылу</ScratchBlock>
-        </div>
+        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Блоктарды жина:</h4>
+        <BlockBuilder
+          availableBlocks={project3Blocks}
+          correctOrder={['flag', 'forever', 'costume', 'wait', 'turn']}
+          onComplete={() => {
+            if (!completed) {
+              completeTask('topic3', 'project3');
+              setCompleted(true);
+            }
+          }}
+        />
       </div>
 
-      <button onClick={markComplete} className={completed ? 'btn-accent' : 'btn-secondary'}>
-        {completed ? '✅ Жоба орындалды!' : '👍 Жобаны орындадым'}
-      </button>
+      {completed && (
+        <div className="feedback-correct animate-pop">✅ Жоба орындалды! ⭐</div>
+      )}
     </div>
   );
 }

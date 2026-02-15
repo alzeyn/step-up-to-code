@@ -1,17 +1,26 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Home, Code, Puzzle, FolderOpen, Save, Gamepad2, Trophy } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+
+import houseImg from '@/assets/house.png';
+import scratchCatImg from '@/assets/scratch-cat.png';
+import puzzleImg from '@/assets/puzzle.png';
+import openFolderImg from '@/assets/open-folder.png';
+import saveIconImg from '@/assets/save-icon.png';
+import rocketImg from '@/assets/rocket.png';
+import gamepadImg from '@/assets/gamepad.png';
+import trophyImg from '@/assets/trophy.png';
 
 // Навигация компоненті - балаларға арналған мәзір
 const navItems = [
-  { path: '/', label: 'Үй беті', icon: Home, emoji: '🏠' },
-  { path: '/topic1', label: 'Менің алғашқы программам', icon: Code, emoji: '📝' },
-  { path: '/topic2', label: 'Scratch жоба құру', icon: Puzzle, emoji: '🧩' },
-  { path: '/topic3', label: 'Жобалық жұмыс (1)', icon: FolderOpen, emoji: '📁' },
-  { path: '/topic4', label: 'Scratch сақтау және ашу', icon: Save, emoji: '💾' },
-  { path: '/topic5', label: 'Жобалық жұмыс (2)', icon: FolderOpen, emoji: '📂' },
-  { path: '/games', label: 'Ойындар', icon: Gamepad2, emoji: '🎮' },
-  { path: '/achievements', label: 'Менің жетістіктерім', icon: Trophy, emoji: '🏆' },
+  { path: '/', label: 'Үй беті', image: houseImg },
+  { path: '/topic1', label: 'Менің алғашқы программам', image: scratchCatImg },
+  { path: '/topic2', label: 'Scratch жоба құру', image: puzzleImg },
+  { path: '/topic3', label: 'Жобалық жұмыс (1)', image: openFolderImg },
+  { path: '/topic4', label: 'Scratch сақтау және ашу', image: saveIconImg },
+  { path: '/topic5', label: 'Жобалық жұмыс (2)', image: rocketImg },
+  { path: '/games', label: 'Ойындар', image: gamepadImg },
+  { path: '/achievements', label: 'Менің жетістіктерім', image: trophyImg },
 ];
 
 export function Navigation() {
@@ -38,7 +47,7 @@ export function Navigation() {
         {/* Logo */}
         <div className="p-6 border-b border-sidebar-border">
           <Link to="/" className="flex items-center gap-3" onClick={() => setIsOpen(false)}>
-            <span className="text-4xl animate-wiggle">🚀</span>
+            <img src={rocketImg} alt="stepcoding" className="w-10 h-10 animate-wiggle" />
             <div>
               <h1 className="text-2xl font-extrabold text-sidebar-primary">stepcoding</h1>
               <p className="text-sm opacity-80">Кодтауды үйренейік!</p>
@@ -57,7 +66,7 @@ export function Navigation() {
                 onClick={() => setIsOpen(false)}
                 className={`nav-link ${isActive ? 'nav-link-active' : 'hover:bg-sidebar-accent'}`}
               >
-                <span className="text-2xl">{item.emoji}</span>
+                <img src={item.image} alt={item.label} className="w-8 h-8 rounded-lg" />
                 <span className="text-base leading-tight">{item.label}</span>
               </Link>
             );

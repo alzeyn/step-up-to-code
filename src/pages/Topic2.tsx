@@ -3,6 +3,12 @@ import { ScratchBlock } from '@/components/ScratchBlock';
 import { TaskFeedback } from '@/components/TaskFeedback';
 import { completeTask } from '@/lib/progress';
 
+import scratchCatImg from '@/assets/scratch-cat.png';
+import catHelloImg from '@/assets/cat-hello.png';
+import catDanceImg from '@/assets/cat-dance.png';
+import greenFlagImg from '@/assets/green-flag.png';
+import waitTimerImg from '@/assets/wait-timer.png';
+
 // Тақырып 2: Scratch программасында жоба құру
 export default function Topic2() {
   return (
@@ -10,29 +16,31 @@ export default function Topic2() {
       <div className="max-w-4xl mx-auto">
         {/* Title */}
         <header className="text-center mb-10">
-          <span className="text-6xl mb-4 block animate-wiggle">🧩</span>
+          <img src={scratchCatImg} alt="Scratch" className="w-20 h-20 mx-auto mb-4 animate-wiggle" />
           <h1 className="section-title">🎨 Scratch программасында жоба құру 🎨</h1>
         </header>
 
         {/* What is a sprite */}
         <section className="card-topic border-highlight mb-8">
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-            <span>🐱</span> Спрайт дегеніміз не? <span>🎭</span>
+            <img src={scratchCatImg} alt="Мысық" className="w-10 h-10 rounded-lg" />
+            Спрайт дегеніміз не?
           </h2>
           <div className="flex items-center gap-4 mb-4">
-            <span className="text-6xl">🐱🐶🧑🚗</span>
+            <img src={scratchCatImg} alt="Мысық" className="w-14 h-14 rounded-lg" />
+            <img src={catDanceImg} alt="Билейтін мысық" className="w-14 h-14 rounded-lg" />
+            <img src={catHelloImg} alt="Сәлем мысық" className="w-14 h-14 rounded-lg" />
           </div>
           <p className="text-lg leading-relaxed mb-4">
             <strong>Спрайт</strong> — бұл Scratch-тағы кейіпкер! 
-            Мысық 🐱, ит 🐶, адам 🧑, машина 🚗 — бәрі спрайт бола алады!
+            Мысық, ит, адам, машина — бәрі спрайт бола алады!
           </p>
           <p className="text-lg flex items-center gap-2">
-            <span className="text-2xl">✨</span>
-            Сен спрайтты программалайсың — ол қозғалады 🚶, сөйлейді 💬, секіреді 🦘!
+            ✨ Сен спрайтты программалайсың — ол қозғалады, сөйлейді, секіреді!
           </p>
           <div className="mt-6 flex justify-center">
             <div className="bg-muted rounded-2xl p-6 text-center">
-              <span className="text-8xl">🐱</span>
+              <img src={scratchCatImg} alt="Scratch мысығы" className="w-24 h-24 mx-auto" />
               <p className="mt-2 font-bold text-lg">👆 Scratch мысығы — бірінші спрайтың! 👆</p>
             </div>
           </div>
@@ -41,18 +49,18 @@ export default function Topic2() {
         {/* Basic blocks */}
         <section className="mb-10">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-            <span>🎨</span> Негізгі блоктар <span>🧱</span>
+            🎨 Негізгі блоктар 🧱
           </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             {/* Motion blocks */}
             <div className="card-fun">
               <h3 className="text-xl font-bold mb-4 text-blue-600 flex items-center gap-2">
-                <span className="text-3xl">🏃🚶</span>
+                <img src={scratchCatImg} alt="Қозғалыс" className="w-8 h-8 rounded-lg" />
                 Қозғалыс блоктары
               </h3>
               <p className="text-muted-foreground mb-4 flex items-center gap-2">
-                <span>🐱</span>➡️ Спрайтты қозғалтуға арналған
+                Спрайтты қозғалтуға арналған ➡️
               </p>
               <div className="space-y-3">
                 <ScratchBlock type="motion">🚶 10 қадам жүру</ScratchBlock>
@@ -64,11 +72,11 @@ export default function Topic2() {
             {/* Looks blocks */}
             <div className="card-fun">
               <h3 className="text-xl font-bold mb-4 text-purple-600 flex items-center gap-2">
-                <span className="text-3xl">👀👗</span>
+                <img src={catHelloImg} alt="Көрініс" className="w-8 h-8 rounded-lg" />
                 Көрініс блоктары
               </h3>
               <p className="text-muted-foreground mb-4 flex items-center gap-2">
-                <span>🎨</span>➡️ Спрайттың сырт көрінісін өзгерту
+                Спрайттың сырт көрінісін өзгерту 🎨
               </p>
               <div className="space-y-3">
                 <ScratchBlock type="looks">💬 "Сәлем!" деп айту</ScratchBlock>
@@ -80,11 +88,11 @@ export default function Topic2() {
             {/* Events blocks */}
             <div className="card-fun">
               <h3 className="text-xl font-bold mb-4 text-yellow-600 flex items-center gap-2">
-                <span className="text-3xl">🏳️▶️</span>
+                <img src={greenFlagImg} alt="Оқиғалар" className="w-8 h-8 rounded-lg" />
                 Оқиғалар блоктары
               </h3>
               <p className="text-muted-foreground mb-4 flex items-center gap-2">
-                <span>🚦</span>➡️ Программаны бастау үшін
+                Программаны бастау үшін 🚦
               </p>
               <div className="space-y-3">
                 <ScratchBlock type="events">🏳️ жасыл жалауша басылғанда</ScratchBlock>
@@ -96,11 +104,11 @@ export default function Topic2() {
             {/* Control blocks */}
             <div className="card-fun">
               <h3 className="text-xl font-bold mb-4 text-orange-600 flex items-center gap-2">
-                <span className="text-3xl">🔄⏳</span>
+                <img src={waitTimerImg} alt="Басқару" className="w-8 h-8 rounded-lg" />
                 Басқару блоктары
               </h3>
               <p className="text-muted-foreground mb-4 flex items-center gap-2">
-                <span>⏱️</span>➡️ Уақыт пен қайталау үшін
+                Уақыт пен қайталау үшін ⏱️
               </p>
               <div className="space-y-3">
                 <ScratchBlock type="control">⏳ 1 секунд күту</ScratchBlock>
@@ -144,13 +152,18 @@ function Task1() {
         🤔 Тапсырма: Не болады? 🤔
       </h3>
       <p className="text-muted-foreground mb-4 flex items-center gap-2">
-        <span className="text-xl">🐱</span>
-        Мына блоктар орындалғанда мысық не істейді?
-        <span className="text-xl">❓</span>
+        <img src={scratchCatImg} alt="Мысық" className="w-8 h-8 rounded-lg" />
+        Мына блоктар орындалғанда мысық не істейді? ❓
       </p>
 
       <div className="card-fun bg-muted/50 mb-6">
-        <div className="text-4xl mb-3 text-center">🏳️ ➡️ 🚶 ➡️ 💬</div>
+        <div className="flex items-center justify-center gap-2 mb-3">
+          <img src={greenFlagImg} alt="Жалауша" className="w-10 h-10 rounded-lg" />
+          <span className="text-2xl">➡️</span>
+          <img src={scratchCatImg} alt="Жүру" className="w-10 h-10 rounded-lg" />
+          <span className="text-2xl">➡️</span>
+          <img src={catHelloImg} alt="Сәлем" className="w-10 h-10 rounded-lg" />
+        </div>
         <div className="space-y-3">
           <ScratchBlock type="events">🏳️ жасыл жалауша басылғанда</ScratchBlock>
           <ScratchBlock type="motion">🚶 10 қадам жүру</ScratchBlock>
@@ -160,9 +173,9 @@ function Task1() {
 
       <div className="space-y-3 mb-6">
         {[
-          { id: 1, text: 'Мысық ұйықтайды', emoji: '🐱😴💤' },
-          { id: 2, text: 'Мысық жүреді және "Сәлем!" дейді', emoji: '🐱🚶💬' },
-          { id: 3, text: 'Мысық жоғалып кетеді', emoji: '🐱❌👻' },
+          { id: 1, text: 'Мысық ұйықтайды', image: scratchCatImg },
+          { id: 2, text: 'Мысық жүреді және "Сәлем!" дейді', image: catHelloImg },
+          { id: 3, text: 'Мысық жоғалып кетеді', image: scratchCatImg },
         ].map((option) => (
           <button
             key={option.id}
@@ -173,7 +186,7 @@ function Task1() {
                 : 'border-border hover:border-secondary/50'
             }`}
           >
-            <span className="text-3xl">{option.emoji}</span>
+            <img src={option.image} alt={option.text} className="w-12 h-12 rounded-lg object-cover" />
             <span className="font-semibold text-lg">{option.text}</span>
           </button>
         ))}
@@ -210,7 +223,7 @@ function Task2() {
         🔍 Тапсырма: Дұрыс блокты тап 🔍
       </h3>
       <div className="flex items-center gap-3 mb-4">
-        <span className="text-4xl">🐱🚶</span>
+        <img src={scratchCatImg} alt="Мысық жүреді" className="w-12 h-12 rounded-lg" />
         <p className="text-lg">
           Сен спрайтты <strong>10 қадам алға жүргізгің</strong> келеді. 
           Қай блокты пайдаланасың?
@@ -277,7 +290,7 @@ function Task3() {
         🧩 Тапсырма: Қажетті блоктарды таңда 🧩
       </h3>
       <div className="flex items-center gap-3 mb-4">
-        <span className="text-4xl">🐱🏳️🚶💬</span>
+        <img src={catHelloImg} alt="Мысық" className="w-12 h-12 rounded-lg" />
         <p className="text-lg">
           Мысық жасыл жалаушаны басқанда жүріп, "Сәлем!" деп айту керек. 
           Қажетті <strong>3 блокты</strong> таңда.
@@ -286,11 +299,11 @@ function Task3() {
 
       <div className="grid sm:grid-cols-2 gap-4 mb-6">
         {[
-          { id: 'events', type: 'events' as const, text: '🏳️ жасыл жалауша басылғанда', emoji: '🏳️' },
-          { id: 'motion', type: 'motion' as const, text: '🚶 10 қадам жүру', emoji: '🚶' },
-          { id: 'looks', type: 'looks' as const, text: '💬 "Сәлем!" деп айту', emoji: '💬' },
-          { id: 'control', type: 'control' as const, text: '🔄 10 рет қайталау', emoji: '🔄' },
-          { id: 'sound', type: 'sound' as const, text: '🔊 Дыбыс ойнату', emoji: '🔊' },
+          { id: 'events', type: 'events' as const, text: '🏳️ жасыл жалауша басылғанда' },
+          { id: 'motion', type: 'motion' as const, text: '🚶 10 қадам жүру' },
+          { id: 'looks', type: 'looks' as const, text: '💬 "Сәлем!" деп айту' },
+          { id: 'control', type: 'control' as const, text: '🔄 10 рет қайталау' },
+          { id: 'sound', type: 'sound' as const, text: '🔊 Дыбыс ойнату' },
         ].map((block) => (
           <div
             key={block.id}
@@ -312,7 +325,7 @@ function Task3() {
 
       <TaskFeedback 
         isCorrect={feedback} 
-        incorrectMessage="3️⃣ блок таңда: 🏳️ оқиға, 🚶 қозғалыс және 💬 көрініс!"
+        incorrectMessage="3️⃣ блок таңда: оқиға, қозғалыс және көрініс!"
         onClose={() => setFeedback(null)} 
       />
     </div>

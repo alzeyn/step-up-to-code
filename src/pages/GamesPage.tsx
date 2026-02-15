@@ -3,17 +3,25 @@ import { TaskFeedback } from '@/components/TaskFeedback';
 import { ScratchBlock } from '@/components/ScratchBlock';
 import { recordGame } from '@/lib/progress';
 
+import mazeImg from '@/assets/maze-game.png';
+import robotImg from '@/assets/robot.png';
+import patternImg from '@/assets/pattern.png';
+import puzzleImg from '@/assets/puzzle.png';
+import scratchCatImg from '@/assets/scratch-cat.png';
+import gamepadImg from '@/assets/gamepad.png';
+import houseImg from '@/assets/house.png';
+
 // Ойындар беті
 export default function GamesPage() {
   const [activeGame, setActiveGame] = useState<string | null>(null);
 
   const games = [
-    { id: 'maze', emoji: '🏠', title: 'Лабиринт', desc: '🐱 Мысықты үйге жеткіз!' },
-    { id: 'robot', emoji: '🤖', title: 'Робот бағдарламашы', desc: '➡️ Роботқа командалар бер!' },
-    { id: 'pattern', emoji: '🔮', title: 'Кезектілік', desc: '🎨 Келесі затты тап!' },
-    { id: 'ordering', emoji: '📋', title: 'Алгоритм реттеу', desc: '🔢 Қадамдарды дұрыс ретке қой' },
-    { id: 'blocks', emoji: '🧱', title: 'Блоктар ойыны', desc: '🧩 Программа блоктарын жина' },
-    { id: 'logic', emoji: '🧠', title: 'Логика ойыны', desc: '🤔 Егер-онда логикасы' },
+    { id: 'maze', image: mazeImg, title: 'Лабиринт', desc: 'Мысықты үйге жеткіз!' },
+    { id: 'robot', image: robotImg, title: 'Робот бағдарламашы', desc: 'Роботқа командалар бер!' },
+    { id: 'pattern', image: patternImg, title: 'Кезектілік', desc: 'Келесі затты тап!' },
+    { id: 'ordering', image: puzzleImg, title: 'Алгоритм реттеу', desc: 'Қадамдарды дұрыс ретке қой' },
+    { id: 'blocks', image: scratchCatImg, title: 'Блоктар ойыны', desc: 'Программа блоктарын жина' },
+    { id: 'logic', image: gamepadImg, title: 'Логика ойыны', desc: 'Егер-онда логикасы' },
   ];
 
   return (
@@ -21,10 +29,10 @@ export default function GamesPage() {
       <div className="max-w-4xl mx-auto">
         {/* Title */}
         <header className="text-center mb-10">
-          <span className="text-6xl mb-4 block animate-bounce-slow">🎮</span>
+          <img src={gamepadImg} alt="Ойындар" className="w-20 h-20 mx-auto mb-4 animate-bounce-slow" />
           <h1 className="section-title">🎯 Ойындар 🎯</h1>
           <p className="text-xl text-muted-foreground">
-            🎈 Ойнай отырып, алгоритмдік ойлауды дамыт! 🎈
+            Ойнай отырып, алгоритмдік ойлауды дамыт!
           </p>
         </header>
 
@@ -37,7 +45,7 @@ export default function GamesPage() {
                 onClick={() => setActiveGame(game.id)}
                 className="card-fun text-center hover:scale-105 transition-transform"
               >
-                <span className="text-6xl mb-4 block">{game.emoji}</span>
+                <img src={game.image} alt={game.title} className="w-16 h-16 mx-auto mb-4 rounded-lg" />
                 <h3 className="text-xl font-bold mb-2">{game.title}</h3>
                 <p className="text-muted-foreground">{game.desc}</p>
               </button>

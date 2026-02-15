@@ -2,6 +2,14 @@ import { useState } from 'react';
 import { ScratchBlock } from '@/components/ScratchBlock';
 import { completeTask } from '@/lib/progress';
 
+import goToSchoolImg from '@/assets/go-to-school.png';
+import waveHelloImg from '@/assets/wave-hello.png';
+import balloonImg from '@/assets/balloon.png';
+import catDanceImg from '@/assets/cat-dance.png';
+import catHelloImg from '@/assets/cat-hello.png';
+import greenFlagImg from '@/assets/green-flag.png';
+import houseImg from '@/assets/house.png';
+
 // Тақырып 3: Жобалық жұмыс (1)
 export default function Topic3() {
   return (
@@ -9,7 +17,7 @@ export default function Topic3() {
       <div className="max-w-4xl mx-auto">
         {/* Title */}
         <header className="text-center mb-10">
-          <span className="text-6xl mb-4 block animate-float">📁</span>
+          <img src={puzzleImg} alt="Жоба" className="w-20 h-20 mx-auto mb-4 animate-float" />
           <h1 className="section-title">🎯 Жобалық жұмыс 🎯</h1>
           <p className="text-xl text-muted-foreground">✨ Өз жобаңды жаса! ✨</p>
         </header>
@@ -17,21 +25,21 @@ export default function Topic3() {
         {/* Intro */}
         <section className="card-topic border-accent mb-8">
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-            <span>🎯</span> Жобалық жұмыс дегеніміз не? <span>🤔</span>
+            🎯 Жобалық жұмыс дегеніміз не? 🤔
           </h2>
           <div className="flex items-center gap-4 mb-4">
-            <span className="text-5xl">💻🐱🎨🚀</span>
+            <img src={catDanceImg} alt="Мысық" className="w-14 h-14 rounded-lg" />
+            <img src={balloonImg} alt="Шар" className="w-14 h-14 rounded-lg" />
+            <img src={goToSchoolImg} alt="Мектеп" className="w-14 h-14 rounded-lg" />
           </div>
           <p className="text-lg leading-relaxed">
             Бұл бөлімде сен өз бетіңше шағын жобалар жасайсың! 
             <br />
             <span className="flex items-center gap-2 mt-2">
-              <span className="text-2xl">👉</span>
-              Scratch-ты аш және төмендегі сценарийлерді программала.
+              👉 Scratch-ты аш және төмендегі сценарийлерді программала.
             </span>
             <span className="flex items-center gap-2 mt-2">
-              <span className="text-2xl">🌈</span>
-              Сенің қиялыңды көрсет!
+              🌈 Сенің қиялыңды көрсет!
             </span>
           </p>
         </section>
@@ -47,6 +55,8 @@ export default function Topic3() {
   );
 }
 
+import puzzleImg from '@/assets/puzzle.png';
+
 // Жоба 1: Үйден мектепке
 function Project1() {
   const [completed, setCompleted] = useState(false);
@@ -61,36 +71,35 @@ function Project1() {
   return (
     <div className="task-card">
       <div className="flex items-start gap-4 mb-6">
-        <span className="text-5xl">🏠➡️🏫</span>
+        <div className="flex gap-2">
+          <img src={houseImg} alt="Үй" className="w-14 h-14 rounded-lg" />
+          <img src={goToSchoolImg} alt="Мектеп" className="w-14 h-14 rounded-lg" />
+        </div>
         <div>
           <h3 className="text-xl font-bold mb-2">🚶 Жоба 1: Үйден мектепке 🚶</h3>
           <p className="text-muted-foreground flex items-center gap-2">
-            <span>🧒</span>
             Кейіпкер үйден шығып, мектепке барады және досына қол бұлғайды.
-            <span>👋</span>
+            <img src={waveHelloImg} alt="Қол бұлғау" className="w-8 h-8 rounded-lg" />
           </p>
         </div>
       </div>
 
       <div className="card-fun bg-muted/50 mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">
-          <span className="text-2xl">📋</span>
-          Алгоритм:
-        </h4>
+        <h4 className="font-bold mb-3 flex items-center gap-2">📋 Алгоритм:</h4>
         <div className="space-y-3 text-lg">
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
             <span className="text-2xl">1️⃣</span>
-            <span className="text-xl">🏳️</span>
+            <img src={greenFlagImg} alt="Жалауша" className="w-8 h-8 rounded-lg" />
             <span>Жасыл жалауша басылғанда</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
             <span className="text-2xl">2️⃣</span>
-            <span className="text-xl">💬🏫</span>
+            <img src={catHelloImg} alt="Сөйлеу" className="w-8 h-8 rounded-lg" />
             <span>Кейіпкер "Мен мектепке барамын!" дейді</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
             <span className="text-2xl">3️⃣</span>
-            <span className="text-xl">🚶➡️</span>
+            <img src={goToSchoolImg} alt="Жүру" className="w-8 h-8 rounded-lg" />
             <span>50 қадам оңға жүреді</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
@@ -100,22 +109,19 @@ function Project1() {
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
             <span className="text-2xl">5️⃣</span>
-            <span className="text-xl">💬👋</span>
+            <img src={waveHelloImg} alt="Сәлем" className="w-8 h-8 rounded-lg" />
             <span>"Сәлем, достар!" дейді</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
             <span className="text-2xl">6️⃣</span>
-            <span className="text-xl">👗👋</span>
+            <img src={waveHelloImg} alt="Қол бұлғау" className="w-8 h-8 rounded-lg" />
             <span>Қол бұлғайды (костюм ауыстыру)</span>
           </div>
         </div>
       </div>
 
       <div className="mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">
-          <span className="text-2xl">🎨🧩</span>
-          Ұсынылатын блоктар:
-        </h4>
+        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Ұсынылатын блоктар:</h4>
         <div className="flex flex-wrap gap-3">
           <ScratchBlock type="events">🏳️ жасыл жалауша</ScratchBlock>
           <ScratchBlock type="looks">💬 "..." деп айту</ScratchBlock>
@@ -125,10 +131,7 @@ function Project1() {
         </div>
       </div>
 
-      <button 
-        onClick={markComplete} 
-        className={completed ? 'btn-accent' : 'btn-secondary'}
-      >
+      <button onClick={markComplete} className={completed ? 'btn-accent' : 'btn-secondary'}>
         {completed ? '✅ Жоба орындалды!' : '👍 Жобаны орындадым'}
       </button>
     </div>
@@ -149,29 +152,26 @@ function Project2() {
   return (
     <div className="task-card">
       <div className="flex items-start gap-4 mb-6">
-        <span className="text-5xl">🎈⬆️☁️</span>
+        <img src={balloonImg} alt="Шар" className="w-16 h-16 rounded-lg" />
         <div>
           <h3 className="text-xl font-bold mb-2">🎈 Жоба 2: Ұшатын шар 🎈</h3>
           <p className="text-muted-foreground flex items-center gap-2">
-            Шар жоғары ұшады ⬆️, "Сәлем!" дейді 💬 және жоғалып кетеді 👻
+            Шар жоғары ұшады ⬆️, "Сәлем!" дейді және жоғалып кетеді
           </p>
         </div>
       </div>
 
       <div className="card-fun bg-muted/50 mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">
-          <span className="text-2xl">📋</span>
-          Алгоритм:
-        </h4>
+        <h4 className="font-bold mb-3 flex items-center gap-2">📋 Алгоритм:</h4>
         <div className="space-y-3 text-lg">
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
             <span className="text-2xl">1️⃣</span>
-            <span className="text-xl">🏳️</span>
+            <img src={greenFlagImg} alt="Жалауша" className="w-8 h-8 rounded-lg" />
             <span>Жасыл жалауша басылғанда</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
             <span className="text-2xl">2️⃣</span>
-            <span className="text-xl">🎈⬇️</span>
+            <img src={balloonImg} alt="Шар" className="w-8 h-8 rounded-lg" />
             <span>Шар төменнен басталады (y = -100)</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
@@ -181,7 +181,7 @@ function Project2() {
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
             <span className="text-2xl">4️⃣</span>
-            <span className="text-xl">💬</span>
+            <img src={catHelloImg} alt="Сөйлеу" className="w-8 h-8 rounded-lg" />
             <span>"Сәлем!" деп 2 секунд айту</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
@@ -193,10 +193,7 @@ function Project2() {
       </div>
 
       <div className="mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">
-          <span className="text-2xl">🎨🧩</span>
-          Ұсынылатын блоктар:
-        </h4>
+        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Ұсынылатын блоктар:</h4>
         <div className="flex flex-wrap gap-3">
           <ScratchBlock type="events">🏳️ жасыл жалауша</ScratchBlock>
           <ScratchBlock type="motion">📍 y: -100 нүктесіне бару</ScratchBlock>
@@ -207,10 +204,7 @@ function Project2() {
         </div>
       </div>
 
-      <button 
-        onClick={markComplete} 
-        className={completed ? 'btn-accent' : 'btn-secondary'}
-      >
+      <button onClick={markComplete} className={completed ? 'btn-accent' : 'btn-secondary'}>
         {completed ? '✅ Жоба орындалды!' : '👍 Жобаны орындадым'}
       </button>
     </div>
@@ -231,24 +225,21 @@ function Project3() {
   return (
     <div className="task-card">
       <div className="flex items-start gap-4 mb-6">
-        <span className="text-5xl">🐱💃🕺</span>
+        <img src={catDanceImg} alt="Билейтін мысық" className="w-16 h-16 rounded-lg" />
         <div>
           <h3 className="text-xl font-bold mb-2">💃 Жоба 3: Билейтін мысық 💃</h3>
           <p className="text-muted-foreground flex items-center gap-2">
-            Жасыл жалауша басылғанда 🏳️ мысық билей бастайды! 🐱💃
+            Жасыл жалауша басылғанда мысық билей бастайды!
           </p>
         </div>
       </div>
 
       <div className="card-fun bg-muted/50 mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">
-          <span className="text-2xl">📋</span>
-          Алгоритм:
-        </h4>
+        <h4 className="font-bold mb-3 flex items-center gap-2">📋 Алгоритм:</h4>
         <div className="space-y-3 text-lg">
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
             <span className="text-2xl">1️⃣</span>
-            <span className="text-xl">🏳️</span>
+            <img src={greenFlagImg} alt="Жалауша" className="w-8 h-8 rounded-lg" />
             <span>Жасыл жалауша басылғанда</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
@@ -258,7 +249,7 @@ function Project3() {
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg ml-8">
             <span className="text-2xl">🔸</span>
-            <span className="text-xl">👗</span>
+            <img src={catDanceImg} alt="Билеу" className="w-8 h-8 rounded-lg" />
             <span>Келесі костюмге ауысу</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg ml-8">
@@ -275,10 +266,7 @@ function Project3() {
       </div>
 
       <div className="mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">
-          <span className="text-2xl">🎨🧩</span>
-          Ұсынылатын блоктар:
-        </h4>
+        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Ұсынылатын блоктар:</h4>
         <div className="flex flex-wrap gap-3">
           <ScratchBlock type="events">🏳️ жасыл жалауша</ScratchBlock>
           <ScratchBlock type="control">♾️ Мәңгі қайталау</ScratchBlock>
@@ -288,10 +276,7 @@ function Project3() {
         </div>
       </div>
 
-      <button 
-        onClick={markComplete} 
-        className={completed ? 'btn-accent' : 'btn-secondary'}
-      >
+      <button onClick={markComplete} className={completed ? 'btn-accent' : 'btn-secondary'}>
         {completed ? '✅ Жоба орындалды!' : '👍 Жобаны орындадым'}
       </button>
     </div>

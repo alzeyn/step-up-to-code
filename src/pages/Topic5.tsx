@@ -2,6 +2,10 @@ import { useState } from 'react';
 import { ScratchBlock } from '@/components/ScratchBlock';
 import { completeTask } from '@/lib/progress';
 
+import scratchCatImg from '@/assets/scratch-cat.png';
+import catHelloImg from '@/assets/cat-hello.png';
+import rocketImg from '@/assets/rocket.png';
+
 // Тақырып 5: Жобалық жұмыс (2)
 export default function Topic5() {
   return (
@@ -9,7 +13,7 @@ export default function Topic5() {
       <div className="max-w-4xl mx-auto">
         {/* Title */}
         <header className="text-center mb-10">
-          <span className="text-6xl mb-4 block animate-wiggle">📂</span>
+          <img src={rocketImg} alt="Жоба" className="w-20 h-20 mx-auto mb-4 animate-wiggle" />
           <h1 className="section-title">🚀 Жобалық жұмыс (2) 🚀</h1>
           <p className="text-xl text-muted-foreground">⭐ Қосымша тапсырмалар ⭐</p>
         </header>
@@ -17,10 +21,12 @@ export default function Topic5() {
         {/* Intro */}
         <section className="card-topic border-pink mb-8">
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-            <span>🚀</span> Жаңа деңгей! <span>🎯</span>
+            <img src={rocketImg} alt="Жаңа деңгей" className="w-10 h-10 rounded-lg" />
+            Жаңа деңгей! 🎯
           </h2>
           <div className="flex items-center gap-4 mb-4">
-            <span className="text-5xl">📈💪🧠✨</span>
+            <img src={scratchCatImg} alt="Мысық" className="w-14 h-14 rounded-lg" />
+            <img src={catHelloImg} alt="Сәлем" className="w-14 h-14 rounded-lg" />
           </div>
           <p className="text-lg leading-relaxed">
             Сен қазір көп нәрсе білесің! 🧠
@@ -56,35 +62,25 @@ function MicroTask1() {
   return (
     <div className="task-card">
       <div className="flex items-start gap-4 mb-6">
-        <span className="text-5xl">⬛🐱</span>
+        <img src={scratchCatImg} alt="Мысық" className="w-14 h-14 rounded-lg" />
         <div>
           <h3 className="text-xl font-bold mb-2">🔲 Тапсырма 1: Шаршы бойынша жүру 🔲</h3>
           <p className="text-muted-foreground flex items-center gap-2">
-            <span>🐱</span>
-            Спрайтты шаршы (квадрат) бойынша жүргіз — 4 жағын өт!
-            <span>⬛</span>
+            Спрайтты шаршы (квадрат) бойынша жүргіз — 4 жағын өт! ⬛
           </p>
         </div>
       </div>
 
       <div className="card-fun bg-gradient-to-br from-secondary/10 to-accent/10 mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">
-          <span className="text-2xl">💡</span>
-          Кеңес:
-        </h4>
+        <h4 className="font-bold mb-3 flex items-center gap-2">💡 Кеңес:</h4>
         <div className="flex items-center justify-center gap-2 mb-4 text-5xl">
-          <span>⬆️</span>
-          <span>➡️</span>
-          <span>⬇️</span>
-          <span>⬅️</span>
+          <span>⬆️</span><span>➡️</span><span>⬇️</span><span>⬅️</span>
         </div>
-        <p className="text-lg mb-4 text-center">
-          Шаршының 4 жағы бар. Әр жақта:
-        </p>
+        <p className="text-lg mb-4 text-center">Шаршының 4 жағы бар. Әр жақта:</p>
         <div className="space-y-3 text-lg">
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
             <span className="text-2xl">1️⃣</span>
-            <span className="text-xl">🚶</span>
+            <img src={scratchCatImg} alt="Жүру" className="w-8 h-8 rounded-lg" />
             <span>100 қадам жүр</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
@@ -101,10 +97,7 @@ function MicroTask1() {
       </div>
 
       <div className="mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">
-          <span className="text-2xl">🎨🧩</span>
-          Қажетті блоктар:
-        </h4>
+        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Қажетті блоктар:</h4>
         <div className="flex flex-wrap gap-3">
           <ScratchBlock type="events">🏳️ жасыл жалауша</ScratchBlock>
           <ScratchBlock type="control">🔄 4 рет қайталау</ScratchBlock>
@@ -113,10 +106,7 @@ function MicroTask1() {
         </div>
       </div>
 
-      <button 
-        onClick={markComplete} 
-        className={completed ? 'btn-accent' : 'btn-secondary'}
-      >
+      <button onClick={markComplete} className={completed ? 'btn-accent' : 'btn-secondary'}>
         {completed ? '✅ Орындалды!' : '👍 Орындадым'}
       </button>
     </div>
@@ -137,68 +127,46 @@ function MicroTask2() {
   return (
     <div className="task-card">
       <div className="flex items-start gap-4 mb-6">
-        <span className="text-5xl">👋🐱</span>
+        <img src={catHelloImg} alt="Сәлем" className="w-14 h-14 rounded-lg" />
         <div>
           <h3 className="text-xl font-bold mb-2">👋 Тапсырма 2: Сәлемдесу анимациясы 👋</h3>
           <p className="text-muted-foreground flex items-center gap-2">
-            Спрайт "Сәлем!" дейді 💬, үлкейеді 📈, кішірейеді 📉 және қайта сәлем айтады 👋
+            Спрайт "Сәлем!" дейді, үлкейеді 📈, кішірейеді 📉 және қайта сәлем айтады
           </p>
         </div>
       </div>
 
       <div className="card-fun bg-gradient-to-br from-pink/10 to-highlight/10 mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">
-          <span className="text-2xl">📋</span>
-          Алгоритм:
-        </h4>
-        <div className="flex items-center justify-center gap-2 mb-4 text-4xl">
-          <span>💬</span>
-          <span>➡️</span>
-          <span>📈</span>
-          <span>➡️</span>
-          <span>📉</span>
-          <span>➡️</span>
-          <span>💬</span>
+        <h4 className="font-bold mb-3 flex items-center gap-2">📋 Алгоритм:</h4>
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <img src={catHelloImg} alt="Сәлем" className="w-10 h-10 rounded-lg" />
+          <span className="text-2xl">➡️📈➡️📉➡️</span>
+          <img src={catHelloImg} alt="Сәлем" className="w-10 h-10 rounded-lg" />
         </div>
         <div className="space-y-3 text-lg">
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
-            <span className="text-2xl">1️⃣</span>
-            <span className="text-xl">🏳️</span>
-            <span>Жасыл жалауша басылғанда</span>
+            <span className="text-2xl">1️⃣</span><span className="text-xl">🏳️</span><span>Жасыл жалауша басылғанда</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
-            <span className="text-2xl">2️⃣</span>
-            <span className="text-xl">💬👋</span>
-            <span>"Сәлем!" деп 2 секунд айт</span>
+            <span className="text-2xl">2️⃣</span><img src={catHelloImg} alt="Сәлем" className="w-8 h-8 rounded-lg" /><span>"Сәлем!" деп 2 секунд айт</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
-            <span className="text-2xl">3️⃣</span>
-            <span className="text-xl">📈</span>
-            <span>Өлшемді 120%-ға өзгерт</span>
+            <span className="text-2xl">3️⃣</span><span className="text-xl">📈</span><span>Өлшемді 120%-ға өзгерт</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
-            <span className="text-2xl">4️⃣</span>
-            <span className="text-xl">⏳</span>
-            <span>1 секунд күт</span>
+            <span className="text-2xl">4️⃣</span><span className="text-xl">⏳</span><span>1 секунд күт</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
-            <span className="text-2xl">5️⃣</span>
-            <span className="text-xl">📉</span>
-            <span>Өлшемді 100%-ға қайтар</span>
+            <span className="text-2xl">5️⃣</span><span className="text-xl">📉</span><span>Өлшемді 100%-ға қайтар</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
-            <span className="text-2xl">6️⃣</span>
-            <span className="text-xl">💬❓</span>
-            <span>"Қалың қалай?" деп айт</span>
+            <span className="text-2xl">6️⃣</span><img src={catHelloImg} alt="Сұрау" className="w-8 h-8 rounded-lg" /><span>"Қалың қалай?" деп айт</span>
           </div>
         </div>
       </div>
 
       <div className="mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">
-          <span className="text-2xl">🎨🧩</span>
-          Қажетті блоктар:
-        </h4>
+        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Қажетті блоктар:</h4>
         <div className="flex flex-wrap gap-3">
           <ScratchBlock type="events">🏳️ жасыл жалауша</ScratchBlock>
           <ScratchBlock type="looks">💬 "..." деп 2 секунд айту</ScratchBlock>
@@ -208,10 +176,7 @@ function MicroTask2() {
         </div>
       </div>
 
-      <button 
-        onClick={markComplete} 
-        className={completed ? 'btn-accent' : 'btn-secondary'}
-      >
+      <button onClick={markComplete} className={completed ? 'btn-accent' : 'btn-secondary'}>
         {completed ? '✅ Орындалды!' : '👍 Орындадым'}
       </button>
     </div>
@@ -232,63 +197,41 @@ function MicroTask3() {
   return (
     <div className="task-card">
       <div className="flex items-start gap-4 mb-6">
-        <span className="text-5xl">👆🐱</span>
+        <img src={scratchCatImg} alt="Мысық" className="w-14 h-14 rounded-lg" />
         <div>
           <h3 className="text-xl font-bold mb-2">👆 Тапсырма 3: Басқанда реакция 👆</h3>
           <p className="text-muted-foreground flex items-center gap-2">
-            Спрайтты басқанда 👆 ол секіреді 🦘 және дыбыс шығарады! 🔊
+            Спрайтты басқанда ол секіреді 🦘 және дыбыс шығарады! 🔊
           </p>
         </div>
       </div>
 
       <div className="card-fun bg-gradient-to-br from-accent/10 to-secondary/10 mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">
-          <span className="text-2xl">📋</span>
-          Алгоритм:
-        </h4>
+        <h4 className="font-bold mb-3 flex items-center gap-2">📋 Алгоритм:</h4>
         <div className="flex items-center justify-center gap-2 mb-4 text-4xl">
-          <span>👆</span>
-          <span>➡️</span>
-          <span>🦘</span>
-          <span>➡️</span>
-          <span>🔊</span>
-          <span>➡️</span>
-          <span>⬇️</span>
+          <span>👆</span><span>➡️</span><span>🦘</span><span>➡️</span><span>🔊</span><span>➡️</span><span>⬇️</span>
         </div>
         <div className="space-y-3 text-lg">
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
-            <span className="text-2xl">1️⃣</span>
-            <span className="text-xl">👆🐱</span>
-            <span>Осы спрайт басылғанда</span>
+            <span className="text-2xl">1️⃣</span><img src={scratchCatImg} alt="Басу" className="w-8 h-8 rounded-lg" /><span>Осы спрайт басылғанда</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
-            <span className="text-2xl">2️⃣</span>
-            <span className="text-xl">⬆️🦘</span>
-            <span>y-ты 50-ге өзгерт (секіру)</span>
+            <span className="text-2xl">2️⃣</span><span className="text-xl">⬆️🦘</span><span>y-ты 50-ге өзгерт (секіру)</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
-            <span className="text-2xl">3️⃣</span>
-            <span className="text-xl">🔊🐱</span>
-            <span>"Мяу" дыбысын ойнат</span>
+            <span className="text-2xl">3️⃣</span><span className="text-xl">🔊</span><span>"Мяу" дыбысын ойнат</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
-            <span className="text-2xl">4️⃣</span>
-            <span className="text-xl">⏳</span>
-            <span>0.5 секунд күт</span>
+            <span className="text-2xl">4️⃣</span><span className="text-xl">⏳</span><span>0.5 секунд күт</span>
           </div>
           <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg">
-            <span className="text-2xl">5️⃣</span>
-            <span className="text-xl">⬇️</span>
-            <span>y-ты -50-ге өзгерт (қайту)</span>
+            <span className="text-2xl">5️⃣</span><span className="text-xl">⬇️</span><span>y-ты -50-ге өзгерт (қайту)</span>
           </div>
         </div>
       </div>
 
       <div className="mb-6">
-        <h4 className="font-bold mb-3 flex items-center gap-2">
-          <span className="text-2xl">🎨🧩</span>
-          Қажетті блоктар:
-        </h4>
+        <h4 className="font-bold mb-3 flex items-center gap-2">🧩 Қажетті блоктар:</h4>
         <div className="flex flex-wrap gap-3">
           <ScratchBlock type="events">👆 Осы спрайт басылғанда</ScratchBlock>
           <ScratchBlock type="motion">⬆️ y-ты 50-ге өзгерту</ScratchBlock>
@@ -298,10 +241,7 @@ function MicroTask3() {
         </div>
       </div>
 
-      <button 
-        onClick={markComplete} 
-        className={completed ? 'btn-accent' : 'btn-secondary'}
-      >
+      <button onClick={markComplete} className={completed ? 'btn-accent' : 'btn-secondary'}>
         {completed ? '✅ Орындалды!' : '👍 Орындадым'}
       </button>
     </div>

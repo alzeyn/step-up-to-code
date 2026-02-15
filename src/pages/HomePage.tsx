@@ -48,29 +48,15 @@ export default function HomePage() {
           <div className="card-fun max-w-2xl mx-auto mb-8">
             <img src={scratchCatImg} alt="Сәлем" className="w-20 h-20 mx-auto mb-4" />
             <p className="text-xl leading-relaxed">
-              Сәлем, кішкентай программист!
+              Сәлем, кішкентай программист! 👋
               <br />
               <span className="flex items-center justify-center gap-2 mt-2">
-                Бұл сайтта сен <strong>алгоритмдік ойлауды</strong> үйренесің.
+                🧠 Бұл сайтта сен <strong>алгоритмдік ойлауды</strong> үйренесің.
               </span>
               <span className="flex items-center justify-center gap-2 mt-2">
-                Scratch программасында қызықты жобалар жасайсың!
+                🎨 Scratch программасында қызықты жобалар жасайсың!
               </span>
             </p>
-            <button
-              onClick={() => {
-                const text = 'Сәлем, кішкентай программист! Бұл сайтта сен алгоритмдік ойлауды үйренесің. Scratch программасында қызықты жобалар жасайсың!';
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'kk-KZ';
-                utterance.rate = 0.85;
-                speechSynthesis.cancel();
-                speechSynthesis.speak(utterance);
-              }}
-              className="mt-4 btn-primary inline-flex items-center gap-2 text-lg"
-              aria-label="Тыңдау"
-            >
-              🔊 Тыңдау
-            </button>
           </div>
 
           {/* What is algorithmic thinking */}
